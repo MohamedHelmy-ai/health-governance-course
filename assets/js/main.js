@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'custom-models-grid':
                 html = `
                     <h1 class="slide-title gs-title" style="text-align:center; margin-bottom: 1rem; font-size: 1.8rem;">${slide.title}</h1>
-                    <div class="cards-grid-container" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; max-width: 1200px; margin: 0 auto; direction:rtl;">
+                    <div class="cards-grid-container content-grid" style="direction:rtl; max-width: 1200px; margin: 0 auto; padding-bottom: 30px;">
                         
                         <!-- Card 1 -->
                         <div class="glass-card gs-card" id="card1" style="position:relative; min-height: 220px; opacity:0;">

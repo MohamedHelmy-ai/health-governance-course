@@ -1097,3 +1097,43 @@ main {
         padding: 20px;
     }
 }
+
+/* Mobile Flex/Grid Overrides for Inline Styles */
+@media (max-width: 768px) {
+    /* Slide 2: Models Grid */
+    .cards-grid-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Slide 3: Framework */
+    .framework-slide-container > div:nth-child(2) {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    /* Slide 4: Pillars */
+    .pillars-container {
+        flex-direction: column !important;
+    }
+    
+    /* Ensure visual definitions in Slide 3 stack */
+    .visual-def-container > div {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+    
+    /* Wrap concept graphics in Slide 3 */
+    .visual-def-container .gs-visual-concept {
+        width: 100% !important;
+    }
+    
+    /* Slide 4: Footer flow items */
+    .footer-flow {
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+    }
+    .footer-flow .gs-flow-item {
+        width: 45% !important;
+        flex: none !important;
+    }
+}
