@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scale to fit logic
     function scaleSlide() {
+        if (window.innerWidth <= 768) {
+            const activeSlide = document.querySelector('.slide.active');
+            if (activeSlide) {
+                activeSlide.style.transform = 'none';
+            }
+            return; // Let CSS handle mobile layout
+        }
+        
         const main = document.getElementById('slide-container');
         const activeSlide = document.querySelector('.slide.active');
         if (!main || !activeSlide) return;

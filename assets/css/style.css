@@ -917,3 +917,183 @@ main {
     opacity: 0.5;
 }
 
+
+/* ==========================================================================
+   Mobile Responsiveness
+   ========================================================================== */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .app-container {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+    main {
+        overflow: visible;
+        align-items: flex-start;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+    .slide {
+        width: 100% !important;
+        padding: 0 15px;
+        min-height: auto;
+    }
+    
+    /* Header */
+    .custom-header {
+        margin: 10px;
+        padding: 0 10px;
+        border-radius: 15px;
+        height: auto;
+        min-height: 50px;
+        flex-wrap: wrap;
+    }
+    .ch-left {
+        display: none; /* Hide empty space */
+    }
+    .ch-title-box {
+        display: none; /* Hide long title */
+    }
+    .ch-slide-tab {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        padding: 5px 10px;
+        margin: 5px 0;
+    }
+    .ch-center {
+        flex: auto;
+        justify-content: flex-start;
+    }
+    .ch-right {
+        gap: 5px;
+    }
+    .ch-pagination {
+        padding: 2px 10px;
+        font-size: 0.9rem;
+    }
+    #btnHelp {
+        display: none; /* Help layout relies on absolute desktop coords */
+    }
+    
+    /* Typography */
+    .slide-title { font-size: 1.8rem; text-align: center; }
+    .splash-screen .slide-title { font-size: 2.2rem; }
+    .unit-label { font-size: 1.1rem; }
+    
+    /* Layouts */
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    .glass-card {
+        padding: 20px;
+    }
+    
+    /* Stepper & Tabs */
+    .stepper-container {
+        gap: 15px;
+    }
+    .step-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .tabs-header {
+        flex-direction: column;
+    }
+    
+    /* Footer */
+    .course-footer {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 15px;
+    }
+    .course-nav {
+        margin: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+    .progress-wrapper {
+        margin: 0;
+        width: 100%;
+    }
+    
+    /* Slide 5 Activity Layout */
+    .activity-layout {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+    .activity-col {
+        width: 100%;
+        gap: 15px;
+    }
+    .activity-center-col {
+        width: 100%;
+        order: -1;
+        margin-bottom: 10px;
+    }
+    .activity-center-circle {
+        width: 140px;
+        height: 140px;
+    }
+    .ac-title { font-size: 1rem; }
+    .ac-sub { font-size: 0.85rem; }
+    
+    .activity-connectors { display: none; }
+    .activity-option::before, .activity-option::after { display: none; }
+    
+    .activity-option.left {
+        flex-direction: row; /* Fix reversed layout on left options */
+    }
+    .opt-num {
+        position: relative;
+        transform: none;
+        top: 0;
+        left: 0 !important;
+        right: 0 !important;
+        margin-left: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 1.1rem;
+    }
+    
+    .activity-footer {
+        flex-wrap: wrap;
+        padding: 15px;
+        gap: 15px;
+        justify-content: center;
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+    .af-item {
+        width: 45%;
+    }
+    .af-arrow {
+        display: none;
+    }
+    .af-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Modals */
+    .dropdown-menu {
+        width: 90vw;
+        left: 5vw;
+        right: 5vw;
+        top: 60px;
+    }
+    .info-modal-content {
+        width: 90vw;
+        padding: 20px;
+    }
+}
