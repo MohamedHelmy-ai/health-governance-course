@@ -39,24 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scale to fit logic
     function scaleSlide() {
-        const main = document.getElementById('slide-container');
-        const activeSlide = document.querySelector('.slide.active');
-        if (!main || !activeSlide) return;
+        const app = document.getElementById('app');
+        const player = document.getElementById('player-wrapper');
+        if (!app || !player) return;
         
-        const availableWidth = main.clientWidth;
-        const availableHeight = main.clientHeight;
+        const availableWidth = app.clientWidth;
+        const availableHeight = app.clientHeight;
         
-        // Fixed PowerPoint aspect ratio 16:9
-        const slideWidth = 1280;
-        const slideHeight = 720;
+        const playerWidth = 1280;
+        const playerHeight = 720;
         
-        const scale = Math.min(availableWidth / slideWidth, availableHeight / slideHeight);
+        const scale = Math.min(availableWidth / playerWidth, availableHeight / playerHeight);
         
-        // Center it perfectly
-        activeSlide.style.position = 'absolute';
-        activeSlide.style.top = '50%';
-        activeSlide.style.left = '50%';
-        activeSlide.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        // Scale the entire player wrapper
+        player.style.transform = `scale(${scale})`;
     }
     
     window.addEventListener('resize', scaleSlide);

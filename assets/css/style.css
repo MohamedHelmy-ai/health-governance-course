@@ -1345,3 +1345,66 @@ body, .app-container {
 .glass-card, .gs-item {
     padding: 15px !important; /* Reduce padding so content fits */
 }
+
+/* ==========================================================================
+   Storyline Player Layout
+   ========================================================================== */
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e8e8e8 !important; /* Grey background outside the player */
+    overflow: hidden;
+}
+
+#player-wrapper {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15); /* Nice shadow like Storyline */
+    transform-origin: center center;
+    overflow: hidden;
+}
+
+.custom-header {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    z-index: 1000;
+}
+
+.course-footer {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+    z-index: 1000;
+    /* ensure footer has background if it was relying on something else */
+}
+
+#slide-container {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    flex-grow: 0 !important;
+}
+
+.slide {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important; /* Remove slide's own transform */
+}
+
+/* Splash start button needs to be elevated so it's clickable */
+.slide[data-type="splash"] .btn-start {
+    z-index: 2000;
+}
