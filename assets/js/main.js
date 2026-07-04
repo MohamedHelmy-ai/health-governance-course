@@ -84,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         btnPrev.addEventListener('click', () => {
-            if (currentSlideIndex > 0) {
+            if (window.returnSlideIndex !== undefined && window.returnSlideIndex !== null) {
+                window.goBackToMenu();
+            } else if (currentSlideIndex > 0) {
                 currentSlideIndex--;
                 renderSlide(currentSlideIndex);
                 updateNavButtons();
@@ -152,8 +154,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateNavButtons() {
-        btnPrev.disabled = currentSlideIndex === 0;
-        btnNext.disabled = currentSlideIndex === totalSlides - 1;
+        const slide = courseData[currentSlideIndex];
+        
+        // Prev button logic: enabled if we can go back linearly, OR if we can return from a branch
+        btnPrev.disabled = currentSlideIndex === 0 && (window.returnSlideIndex === undefined || window.returnSlideIndex === null);
+        
+        // Hide Next button on detail/branch slides to force using Prev/Back
+        if (slide.showBackButton || slide.id.includes('_DETAIL_')) {
+            btnNext.style.display = 'none';
+        } else {
+            btnNext.style.display = '';
+            btnNext.disabled = currentSlideIndex === totalSlides - 1;
+        }
     }
 
     function togglePlay() {
