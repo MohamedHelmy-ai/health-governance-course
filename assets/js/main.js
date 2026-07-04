@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     let currentSlideIndex = 0;
+    // Initialize SCORM
+    if (SCORM.init()) {
+        // Set initial status to prevent "failed" by default on SCORM Cloud
+        const completionStatus = SCORM.getValue("cmi.completion_status");
+        if (completionStatus === "unknown" || completionStatus === "not attempted") {
+            SCORM.setValue("cmi.completion_status", "incomplete");
+            SCORM.setValue("cmi.success_status", "unknown");
+            SCORM.commit();
+        }
+        
+        const savedLocation = SCORM.getValue("cmi.location");
+        if (savedLocation && !isNaN(parseInt(savedLocation))) {
+            currentSlideIndex = parseInt(savedLocation);
+            if (currentSlideIndex >= courseData.length || currentSlideIndex < 0) {
+                currentSlideIndex = 0;
+            }
+        }
+    }
+
+    // Terminate SCORM on close
+    window.addEventListener("beforeunload", () => {
+        if (currentSlideIndex < courseData.length - 1) {
+            SCORM.setValue("cmi.exit", "suspend");
+        } else {
+            SCORM.setValue("cmi.exit", "normal");
+        }
+        SCORM.commit();
+        SCORM.terminate();
+    });
+
     const totalSlides = courseData.length;
     
     // DOM Elements
@@ -59,7 +89,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize UI
     function init() {
         renderSlide(currentSlideIndex);
+        
         updateNavButtons();
+        
+        // SCORM Progress Tracking
+        SCORM.setValue("cmi.location", index.toString());
+        if (index === courseData.length - 1) {
+            SCORM.setValue("cmi.completion_status", "completed");
+            SCORM.setValue("cmi.success_status", "passed");
+        }
+        SCORM.commit();
+
         
         btnNext.addEventListener('click', () => {
             if (currentSlideIndex < totalSlides - 1) {
