@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const availableHeight = app.clientHeight;
         
         const playerWidth = 1280;
-        const playerHeight = 830;
+        const playerHeight = 770;
         
         const scale = Math.min(availableWidth / playerWidth, availableHeight / playerHeight);
         

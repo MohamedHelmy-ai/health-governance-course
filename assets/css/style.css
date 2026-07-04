@@ -75,23 +75,26 @@ body {
    Header & Footer
    ========================================================================== */
 .custom-header {
-    background: #1B7059;
-    width: 100%;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    width: calc(100% - 80px);
     height: 60px;
-    flex-shrink: 0;
+    background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
     z-index: 50;
-    box-sizing: border-box;
+    pointer-events: none; /* Let clicks pass through empty areas */
 }
 
 .ch-left {
+    pointer-events: auto;
     width: 150px;
 }
 
 .ch-center {
+    pointer-events: auto;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -128,19 +131,18 @@ body {
 }
 
 .ch-right {
+    pointer-events: auto;
     display: flex;
     align-items: center;
 }
 
 .ch-pagination {
     font-family: 'Tajawal', sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 500;
-    background: white;
-    color: #1B7059;
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin-left: 15px;
+    color: #103333;
+    background: transparent;
+    margin-left: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,15 +156,16 @@ body {
 .ch-icon-btn {
     background: transparent;
     border: none;
-    color: white;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: #b0b0b0; /* Light grey */
     cursor: pointer;
-    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    transition: all 0.2s;
+    opacity: 0.7;
 }
 .ch-icon-btn:hover {
     transform: scale(1.1);
@@ -1366,7 +1369,7 @@ body, .app-container {
 
 #player-wrapper {
     width: 1280px;
-    height: 830px;
+    height: 770px;
     background: #ffffff;
     display: flex;
     flex-direction: column;
