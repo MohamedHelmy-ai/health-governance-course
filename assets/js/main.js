@@ -69,25 +69,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // State
     let currentTimeline = null;
 
+    function getNextLinearIndex(currentIndex) {
+        for (let i = currentIndex + 1; i < courseData.length; i++) {
+            if (!courseData[i].isBranch) return i;
+        }
+        return -1;
+    }
+
+    function getPrevLinearIndex(currentIndex) {
+        for (let i = currentIndex - 1; i >= 0; i--) {
+            if (!courseData[i].isBranch) return i;
+        }
+        return -1;
+    }
+
     // Initialize UI
     function init() {
         renderSlide(currentSlideIndex);
         updateNavButtons();
-
-        
-        function getNextLinearIndex(currentIndex) {
-            for (let i = currentIndex + 1; i < courseData.length; i++) {
-                if (!courseData[i].isBranch) return i;
-            }
-            return -1;
-        }
-
-        function getPrevLinearIndex(currentIndex) {
-            for (let i = currentIndex - 1; i >= 0; i--) {
-                if (!courseData[i].isBranch) return i;
-            }
-            return -1;
-        }
 
         btnNext.addEventListener('click', () => {
             const nextIdx = getNextLinearIndex(currentSlideIndex);
