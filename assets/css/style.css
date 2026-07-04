@@ -1255,3 +1255,28 @@ main {
 .virtual-presenter.hidden {
     display: none;
 }
+
+/* Override header and footer to be full width without floating margins */
+.custom-header {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+}
+.course-footer {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+}
+
+/* Clean white background for letterboxing */
+body, .app-container {
+    background: #ffffff !important;
+}
+
+/* Remove borders/shadows from slide to make it blend with the white background */
+.slide {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Fix header and footer colors if needed, but they are already fine */
