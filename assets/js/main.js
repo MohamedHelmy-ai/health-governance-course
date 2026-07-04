@@ -271,12 +271,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Hide footer on splash screens
         const footer = document.querySelector('.course-footer');
-        if (footer) {
-            if (slide.type === 'splash') {
-                footer.style.display = 'none';
-            } else {
-                footer.style.display = 'flex';
-            }
+        const header = document.querySelector('.custom-header');
+        if (slide.type === 'splash') {
+            if(footer) footer.style.display = 'none';
+            if(header) header.style.display = 'none';
+        } else {
+            if(footer) footer.style.display = 'flex';
+            if(header) header.style.display = 'flex';
         }
         
         // Reset playback

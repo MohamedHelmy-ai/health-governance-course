@@ -234,8 +234,9 @@ main {
 }
 
 .splash-screen {
-    text-align: center;
-    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .unit-label {
@@ -656,13 +657,19 @@ main {
    Footer
    ========================================================================== */
 .course-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding: 10px 20px;
-    background: #103333; /* Dark teal base */
+    background: #103333;
     border-top: 2px solid var(--color-teal);
     height: 50px;
+    box-sizing: border-box;
+    z-index: 50;
 }
 
 .course-nav {
@@ -1250,11 +1257,10 @@ main {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom center;
-    z-index: 100;
+    z-index: 40; /* Below header/footer but above content */
     pointer-events: none;
-    mix-blend-mode: multiply; /* Blends white background into the slide */
+    mix-blend-mode: multiply;
     opacity: 0;
-    transform: translateY(100px);
 }
 
 .virtual-presenter.hidden {
@@ -1368,8 +1374,7 @@ body, .app-container {
     width: 1280px;
     height: 720px;
     position: relative;
-    background: url('../images/bg.png') no-repeat center center;
-    background-size: 100% 100%;
+    background: #ffffff;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
     transform-origin: center center;
     overflow: hidden;
