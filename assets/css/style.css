@@ -1315,3 +1315,33 @@ body, .app-container {
     border: none !important;
     border-radius: 8px !important;
 }
+
+/* Make header transparent and hide HTML titles since they are baked into bg.png */
+.custom-header {
+    background: transparent !important;
+    box-shadow: none !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    z-index: 1000;
+}
+
+.ch-center {
+    display: none !important; /* Hides the HTML titles that were overlapping the image text */
+}
+
+/* Adjust slide padding to be natural */
+.slide {
+    padding: 130px 40px 40px 40px !important; /* Top padding clears the logos in bg.png */
+}
+
+/* Allow grid to size naturally without stretching cards */
+.content-grid {
+    height: auto !important;
+    align-content: start;
+}
+
+.glass-card, .gs-item {
+    padding: 15px !important; /* Reduce padding so content fits */
+}

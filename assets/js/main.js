@@ -250,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const slideDiv = document.createElement('div');
         slideDiv.className = 'slide active';
+        slideDiv.setAttribute('data-type', slide.type);
         
         let html = '';
         
