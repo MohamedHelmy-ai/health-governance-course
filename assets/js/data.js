@@ -189,10 +189,26 @@ const courseData = [
         title: "",
         duration: 20,
         cards: [
-            { text: "تأثير تعارض المصالح على المؤسسة", icon: '<svg viewBox="0 0 24 24" fill="#237a74" width="70" height="70"><path d="M5 3v18h14V3H5zm7 16H8v-2h4v2zm0-4H8v-2h4v2zm0-4H8V9h4v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2z"/></svg>' },
-            { text: "تأثير تعارض المصالح على الفرد", icon: '<svg viewBox="0 0 24 24" fill="#1b5a5a" width="70" height="70"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>' },
-            { text: "كيفية التعامل مع تعارض المصالح", icon: '<svg viewBox="0 0 24 24" fill="#237a74" width="70" height="70"><path d="M21 3H3v18h18V3zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>' },
-            { text: "أمثلة تعارض المصالح", icon: '<svg viewBox="0 0 24 24" fill="#1b5a5a" width="70" height="70"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>' }
+            { 
+                text: "تأثير تعارض المصالح على المؤسسة", 
+                icon: '<img src="assets/images/icon_building.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/237a74?text=Building\'">',
+                details: "يؤدي تعارض المصالح إلى فقدان الثقة في المؤسسة، اتخاذ قرارات متحيزة، وهدر الموارد المالية والبشرية مما يؤثر على جودة الخدمات."
+            },
+            { 
+                text: "تأثير تعارض المصالح على الفرد", 
+                icon: '<img src="assets/images/icon_person.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/1b5a5a?text=Person\'">',
+                details: "يعرض الفرد للمساءلة القانونية، تشويه السمعة المهنية، وفقدان النزاهة والمصداقية في بيئة العمل."
+            },
+            { 
+                text: "كيفية التعامل مع تعارض المصالح", 
+                icon: '<img src="assets/images/icon_handshake.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/237a74?text=Handshake\'">',
+                details: "يجب الإفصاح الفوري عن أي تعارض محتمل، التنحي عن اتخاذ القرارات المتعلقة به، والالتزام بسياسات المؤسسة والشفافية التامة."
+            },
+            { 
+                text: "أمثلة تعارض المصالح", 
+                icon: '<img src="assets/images/icon_arrows.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/1b5a5a?text=Arrows\'">',
+                details: "قبول هدايا من موردين، توظيف أقارب في مناصب تحت إدارتك المباشرة، أو استغلال معلومات سرية لتحقيق مكاسب شخصية."
+            }
         ]
     }
 ]
