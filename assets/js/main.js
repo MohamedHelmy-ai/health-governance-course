@@ -39,24 +39,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scale to fit logic
     function scaleSlide() {
-        const container = document.getElementById('slide-container');
-        const scaler = document.getElementById('slide-scaler');
-        if (!container || !scaler) return;
+        const app = document.getElementById('app');
+        const player = document.getElementById('player-wrapper');
+        if (!app || !player) return;
         
-        const availableWidth = container.clientWidth;
-        const availableHeight = container.clientHeight;
+        const availableWidth = app.clientWidth;
+        const availableHeight = app.clientHeight;
         
-        const slideWidth = 1280;
-        const slideHeight = 720;
+        // Total height is roughly 70 (header) + 720 (slide) + 40 (footer) = 830
+        const playerWidth = 1300; 
+        const playerHeight = 830;
         
-        const scaleX = availableWidth / slideWidth;
-        const scaleY = availableHeight / slideHeight;
-        const scale = Math.min(scaleX, scaleY);
+        const scaleX = availableWidth / playerWidth;
+        const scaleY = availableHeight / playerHeight;
+        const scale = Math.min(scaleX, scaleY) * 0.98; // 2% padding
         
-        // Scale the inner scaler container and center it
-        scaler.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        player.style.transform = `scale(${scale})`;
     }
-    
     window.addEventListener('resize', scaleSlide);
     const btnNext = document.getElementById('btnNext');
     const btnPrev = document.getElementById('btnPrev');
@@ -269,8 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render engine
     function renderSlide(index) {
         const slide = courseData[index];
-        const slideScaler = document.getElementById('slide-scaler');
-        if(slideScaler) slideScaler.innerHTML = ''; 
+        slideContainer.innerHTML = ''; 
         
         // Hide footer on splash screens
         const footer = document.querySelector('.course-footer');
@@ -878,7 +876,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         slideDiv.innerHTML = html;
-        if(slideScaler) slideScaler.appendChild(slideDiv);
+        slideContainer.appendChild(slideDiv);
         
         // Apply dynamic background
         if (slide.type === 'splash') {

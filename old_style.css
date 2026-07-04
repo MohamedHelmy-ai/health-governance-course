@@ -37,10 +37,9 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff;
-    overflow: hidden;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
 
 .bg-image {
@@ -76,26 +75,23 @@ body {
    Header & Footer
    ========================================================================== */
 .custom-header {
-    width: 1300px; /* Slightly wider than slide */
-    height: 70px;
-    background: #1ca68d; /* Teal pill */
-    border-radius: 40px;
+    background: #1B7059;
+    width: 100%;
+    height: 60px;
+    flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    margin-bottom: -15px; /* Overlap slide slightly? Or just sit above it */
-    z-index: 10;
-    position: relative;
+    z-index: 50;
+    box-sizing: border-box;
 }
 
 .ch-left {
-    pointer-events: auto;
     width: 150px;
 }
 
 .ch-center {
-    pointer-events: auto;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -132,7 +128,6 @@ body {
 }
 
 .ch-right {
-    pointer-events: auto;
     display: flex;
     align-items: center;
 }
@@ -140,11 +135,12 @@ body {
 .ch-pagination {
     font-family: 'Tajawal', sans-serif;
     font-size: 18px;
-    font-weight: 800;
-    color: #1ca68d;
+    font-weight: 500;
     background: white;
+    color: #1B7059;
     padding: 5px 15px;
     border-radius: 20px;
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,21 +148,21 @@ body {
 
 .ch-icons {
     display: flex;
-    gap: 10px;
-    align-items: center;
+    gap: 5px;
 }
 
 .ch-icon-btn {
     background: transparent;
     border: none;
     color: white;
-    cursor: pointer;
+    width: 35px;
+    height: 35px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    transition: all 0.2s;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 50%;
 }
 .ch-icon-btn:hover {
     transform: scale(1.1);
@@ -657,14 +653,17 @@ main {
    Footer
    ========================================================================== */
 .course-footer {
-    width: 1280px;
-    height: 40px;
-    background: #1ca68d;
+    width: 100%;
+    height: 50px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding: 0 15px;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    background: #103333;
+    border-top: 2px solid var(--color-teal);
     box-sizing: border-box;
-    border-radius: 0 0 10px 10px;
+    z-index: 50;
 }
 
 .course-nav {
@@ -1367,10 +1366,13 @@ body, .app-container {
 
 #player-wrapper {
     width: 1280px;
+    height: 830px;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
     transform-origin: center center;
+    overflow: hidden;
 }
 
 .custom-header {
@@ -1391,12 +1393,11 @@ body, .app-container {
 }
 
 #slide-container {
-    width: 1280px;
-    height: 720px;
-    position: relative;
+    position: relative !important;
+    width: 1280px !important;
+    height: 720px !important;
+    flex-shrink: 0 !important;
     overflow: hidden;
-    background: #000000; /* Black background as requested */
-    z-index: 5;
 }
 
 .slide {
@@ -1440,5 +1441,3 @@ body, .app-container {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
     border-color: #237A74 !important;
 }
-
-
