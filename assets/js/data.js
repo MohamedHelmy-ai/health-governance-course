@@ -213,6 +213,7 @@ const courseData = [
     },
     {
         id: "S06_DETAIL_1",
+        isBranch: true,
         type: "info",
         title: "تأثير تعارض المصالح على المؤسسة",
         showBackButton: true,
@@ -221,6 +222,7 @@ const courseData = [
     },
     {
         id: "S06_DETAIL_2",
+        isBranch: true,
         type: "info",
         title: "تأثير تعارض المصالح على الفرد",
         showBackButton: true,
@@ -229,6 +231,7 @@ const courseData = [
     },
     {
         id: "S06_DETAIL_3",
+        isBranch: true,
         type: "info",
         title: "كيفية التعامل مع تعارض المصالح",
         showBackButton: true,
@@ -237,6 +240,7 @@ const courseData = [
     },
     {
         id: "S06_DETAIL_4",
+        isBranch: true,
         type: "info",
         title: "أمثلة تعارض المصالح",
         showBackButton: true,

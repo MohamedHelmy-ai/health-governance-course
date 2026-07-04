@@ -75,9 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
         updateNavButtons();
 
         
+        function getNextLinearIndex(currentIndex) {
+            for (let i = currentIndex + 1; i < courseData.length; i++) {
+                if (!courseData[i].isBranch) return i;
+            }
+            return -1;
+        }
+
+        function getPrevLinearIndex(currentIndex) {
+            for (let i = currentIndex - 1; i >= 0; i--) {
+                if (!courseData[i].isBranch) return i;
+            }
+            return -1;
+        }
+
         btnNext.addEventListener('click', () => {
-            if (currentSlideIndex < totalSlides - 1) {
-                currentSlideIndex++;
+            const nextIdx = getNextLinearIndex(currentSlideIndex);
+            if (nextIdx !== -1) {
+                currentSlideIndex = nextIdx;
                 renderSlide(currentSlideIndex);
                 updateNavButtons();
             }
@@ -86,10 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
         btnPrev.addEventListener('click', () => {
             if (window.returnSlideIndex !== undefined && window.returnSlideIndex !== null) {
                 window.goBackToMenu();
-            } else if (currentSlideIndex > 0) {
-                currentSlideIndex--;
-                renderSlide(currentSlideIndex);
-                updateNavButtons();
+            } else {
+                const prevIdx = getPrevLinearIndex(currentSlideIndex);
+                if (prevIdx !== -1) {
+                    currentSlideIndex = prevIdx;
+                    renderSlide(currentSlideIndex);
+                    updateNavButtons();
+                }
             }
         });
 
@@ -156,15 +174,51 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateNavButtons() {
         const slide = courseData[currentSlideIndex];
         
-        // Prev button logic: enabled if we can go back linearly, OR if we can return from a branch
-        btnPrev.disabled = currentSlideIndex === 0 && (window.returnSlideIndex === undefined || window.returnSlideIndex === null);
-        
-        // Hide Next button on detail/branch slides to force using Prev/Back
-        if (slide.showBackButton || slide.id.includes('_DETAIL_')) {
-            btnNext.style.display = 'none';
+        if (slide.isBranch) {
+            btnNext.style.visibility = 'hidden';
+            btnPrev.style.visibility = 'visible';
+            btnPrev.disabled = false; // Always enabled to go back
+            
+            // Optionally update pagination text
+            const pageTotal = document.querySelector('.ch-pagination');
+            if(pageTotal) pageTotal.style.opacity = '0';
         } else {
-            btnNext.style.display = '';
-            btnNext.disabled = currentSlideIndex === totalSlides - 1;
+            btnNext.style.visibility = 'visible';
+            btnPrev.style.visibility = 'visible';
+            
+            const pageTotal = document.querySelector('.ch-pagination');
+            if(pageTotal) {
+                pageTotal.style.opacity = '1';
+                // Calculate linear slides only
+                const linearSlides = courseData.filter(s => !s.isBranch);
+                const currentLinear = courseData.slice(0, currentSlideIndex + 1).filter(s => !s.isBranch).length;
+                pageTotal.textContent = `${currentLinear}/${linearSlides.length}`;
+            }
+            
+            const nextIdx = getNextLinearIndex(currentSlideIndex);
+            const prevIdx = getPrevLinearIndex(currentSlideIndex);
+            
+            btnPrev.disabled = (prevIdx === -1);
+            
+            // Gating logic: force completion before Next
+            if (slide.id === "S06_CONFLICT") {
+                let allVisited = true;
+                if (slide.cards) {
+                    for (let i=0; i<slide.cards.length; i++) {
+                        if (!window.visitedCards || !window.visitedCards[`S06_CONFLICT_${i}`]) {
+                            allVisited = false;
+                            break;
+                        }
+                    }
+                }
+                btnNext.disabled = !allVisited || (nextIdx === -1);
+                btnNext.style.opacity = (!allVisited || nextIdx === -1) ? '0.5' : '1';
+                btnNext.style.cursor = (!allVisited || nextIdx === -1) ? 'not-allowed' : 'pointer';
+            } else {
+                btnNext.disabled = (nextIdx === -1);
+                btnNext.style.opacity = (nextIdx === -1) ? '0.5' : '1';
+                btnNext.style.cursor = (nextIdx === -1) ? 'not-allowed' : 'pointer';
+            }
         }
     }
 
