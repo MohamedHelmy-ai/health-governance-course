@@ -1280,3 +1280,38 @@ body, .app-container {
 }
 
 /* Fix header and footer colors if needed, but they are already fine */
+
+/* Fix text colors to be readable on white background */
+.slide {
+    color: #115E59 !important;
+}
+.slide-title, .gs-title {
+    color: #0b3d3a !important;
+}
+.glass-card, .gs-item {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #1a1a1a !important;
+    border: 1px solid #115E59 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+.glass-card p, .gs-item p {
+    color: #333333 !important;
+}
+.step-number {
+    background: #115E59 !important;
+    color: white !important;
+}
+
+/* Splash screen start button positioning fix */
+.slide[data-type="splash"] .btn-start {
+    position: absolute;
+    left: 100px;
+    bottom: 80px;
+    margin: 0 !important;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    background: #115E59 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+}

@@ -257,8 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'splash':
                 html = `
                     <div class="splash-screen">
-                        <h2 class="unit-label">${slide.unit}</h2>
-                        <h1 class="slide-title gs-title">${slide.title}</h1>
                         ${slide.buttonText !== 'إغلاق' ? `<button class="btn-start gs-btn" onclick="document.getElementById('btnNext').click()">${slide.buttonText}</button>` : `<button class="btn-start gs-btn" onclick="window.close()">${slide.buttonText}</button>`}
                     </div>
                 `;
