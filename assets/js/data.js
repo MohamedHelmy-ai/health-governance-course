@@ -192,24 +192,56 @@ const courseData = [
             { 
                 text: "تأثير تعارض المصالح على المؤسسة", 
                 icon: '<svg viewBox="0 0 24 24" fill="#237a74" width="80" height="80"><path d="M5 3v18h14V3H5zm7 16H8v-2h4v2zm0-4H8v-2h4v2zm0-4H8V9h4v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2z"/></svg>',
-                details: "يؤدي تعارض المصالح إلى فقدان الثقة في المؤسسة، اتخاذ قرارات متحيزة، وهدر الموارد المالية والبشرية مما يؤثر على جودة الخدمات."
+                targetSlide: "S06_DETAIL_1"
             },
             { 
                 text: "تأثير تعارض المصالح على الفرد", 
-                icon: '<img src="assets/images/icon_person.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/1b5a5a?text=Person\'">',
-                details: "يعرض الفرد للمساءلة القانونية، تشويه السمعة المهنية، وفقدان النزاهة والمصداقية في بيئة العمل."
+                icon: '<svg viewBox="0 0 24 24" fill="#1b5a5a" width="80" height="80"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>',
+                targetSlide: "S06_DETAIL_2"
             },
             { 
                 text: "كيفية التعامل مع تعارض المصالح", 
-                icon: '<img src="assets/images/icon_handshake.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/237a74?text=Handshake\'">',
-                details: "يجب الإفصاح الفوري عن أي تعارض محتمل، التنحي عن اتخاذ القرارات المتعلقة به، والالتزام بسياسات المؤسسة والشفافية التامة."
+                icon: '<svg viewBox="0 0 24 24" fill="#237a74" width="80" height="80"><path d="M21 3H3v18h18V3zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>',
+                targetSlide: "S06_DETAIL_3"
             },
             { 
                 text: "أمثلة تعارض المصالح", 
-                icon: '<img src="assets/images/icon_arrows.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/1b5a5a?text=Arrows\'">',
-                details: "قبول هدايا من موردين، توظيف أقارب في مناصب تحت إدارتك المباشرة، أو استغلال معلومات سرية لتحقيق مكاسب شخصية."
+                icon: '<svg viewBox="0 0 24 24" fill="#1b5a5a" width="80" height="80"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>',
+                targetSlide: "S06_DETAIL_4"
             }
         ]
+    },
+    {
+        id: "S06_DETAIL_1",
+        type: "info",
+        title: "تأثير تعارض المصالح على المؤسسة",
+        showBackButton: true,
+        duration: 10,
+        content: "<div style='display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%;'><h2 style='color: #237A74; font-size: 40px; margin-bottom: 30px; font-weight: bold;'>تأثير تعارض المصالح على المؤسسة</h2><p style='font-size: 28px; line-height: 1.8; color: #1B5A5A; max-width: 900px;'>يؤدي تعارض المصالح إلى فقدان الثقة في المؤسسة، اتخاذ قرارات متحيزة، وهدر الموارد المالية والبشرية مما يؤثر سلباً على جودة الخدمات المقدمة.</p></div>"
+    },
+    {
+        id: "S06_DETAIL_2",
+        type: "info",
+        title: "تأثير تعارض المصالح على الفرد",
+        showBackButton: true,
+        duration: 10,
+        content: "<div style='display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%;'><h2 style='color: #237A74; font-size: 40px; margin-bottom: 30px; font-weight: bold;'>تأثير تعارض المصالح على الفرد</h2><p style='font-size: 28px; line-height: 1.8; color: #1B5A5A; max-width: 900px;'>يعرض الفرد للمساءلة القانونية، تشويه السمعة المهنية، وفقدان النزاهة والمصداقية في بيئة العمل مما قد ينهي مسيرته المهنية بالكامل.</p></div>"
+    },
+    {
+        id: "S06_DETAIL_3",
+        type: "info",
+        title: "كيفية التعامل مع تعارض المصالح",
+        showBackButton: true,
+        duration: 10,
+        content: "<div style='display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%;'><h2 style='color: #237A74; font-size: 40px; margin-bottom: 30px; font-weight: bold;'>كيفية التعامل مع تعارض المصالح</h2><p style='font-size: 28px; line-height: 1.8; color: #1B5A5A; max-width: 900px;'>يجب الإفصاح الفوري عن أي تعارض محتمل، التنحي عن اتخاذ القرارات المتعلقة به، والالتزام الصارم بسياسات المؤسسة والشفافية التامة.</p></div>"
+    },
+    {
+        id: "S06_DETAIL_4",
+        type: "info",
+        title: "أمثلة تعارض المصالح",
+        showBackButton: true,
+        duration: 10,
+        content: "<div style='display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%;'><h2 style='color: #237A74; font-size: 40px; margin-bottom: 30px; font-weight: bold;'>أمثلة تعارض المصالح</h2><p style='font-size: 28px; line-height: 1.8; color: #1B5A5A; max-width: 900px;'>قبول هدايا من موردين، توظيف أقارب في مناصب تحت إدارتك المباشرة، أو استغلال معلومات سرية لتحقيق مكاسب شخصية مالية أو معنوية.</p></div>"
     }
 ]
 ;

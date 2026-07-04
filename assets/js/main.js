@@ -379,18 +379,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 break;
 
-                        case 'custom-icon-cards':
+            case 'custom-icon-cards':
                 html = `
                     <div class="slide-content w-100 h-100 d-flex flex-column justify-content-center align-items-center" style="padding: 0; box-sizing: border-box;">
                         <div class="content-grid w-100" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; max-width: 1100px; margin: 0 auto; align-items: end; height: 100%; padding-bottom: 140px;">
-                            ${slide.cards.map((c, idx) => `
-                                <div class="icon-card gs-item" onclick="openCardDetails(${idx})" style="cursor: pointer; position: relative; background: #f8f9fa; border-radius: 15px; border: none; text-align: center; padding: 0 10px 25px 10px; height: 210px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: all 0.3s ease;">
+                            ${slide.cards.map((c, idx) => {
+                                const slideKey = slide.id + '_' + idx;
+                                const isVisited = window.visitedCards && window.visitedCards[slideKey];
+                                const checkmarkHtml = isVisited ? '<div class="gs-item" style="position:absolute; top:-15px; right:-15px; background:#4CAF50; color:white; border-radius:50%; width:45px; height:45px; display:flex; justify-content:center; align-items:center; font-size:24px; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:10;">✓</div>' : '';
+                                
+                                return `
+                                <div class="icon-card gs-item" onclick="handleCardClick('${slide.id}', ${idx}, '${c.targetSlide}')" style="cursor: pointer; position: relative; background: #f8f9fa; border-radius: 15px; border: none; text-align: center; padding: 0 10px 25px 10px; height: 210px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: all 0.3s ease;">
+                                    ${checkmarkHtml}
                                     <div class="icon-circle" style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 190px; height: 190px; border-radius: 50%; background: #ffffff; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden; z-index: 2;">
                                         ${c.icon}
                                     </div>
                                     <h4 style="color: #1B5A5A; font-weight: 800; font-size: 20px; line-height: 1.4; margin: 0; z-index: 1;">${c.text}</h4>
                                 </div>
-                            `).join('')}
+                            `}).join('')}
                         </div>
                     </div>
                 `;
@@ -1331,6 +1337,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     // Modal Logic for Cards
+    
+    // Branching Navigation Logic
+    window.handleCardClick = function(slideId, cardIdx, targetSlideId) {
+        // Mark card as visited
+        window.visitedCards = window.visitedCards || {};
+        window.visitedCards[`${slideId}_${cardIdx}`] = true;
+        
+        // Find target slide index
+        const targetIdx = courseData.findIndex(s => s.id === targetSlideId);
+        if (targetIdx !== -1) {
+            window.returnSlideIndex = currentSlideIndex; // Remember where to go back
+            currentSlideIndex = targetIdx;
+            renderSlide(currentSlideIndex);
+            updateNavButtons();
+        }
+    }
+
+    window.goBackToMenu = function() {
+        if (window.returnSlideIndex !== undefined && window.returnSlideIndex !== null) {
+            currentSlideIndex = window.returnSlideIndex;
+            window.returnSlideIndex = null;
+            renderSlide(currentSlideIndex);
+            updateNavButtons();
+        }
+    }
+
     window.openCardDetails = function(cardIndex) {
         const slide = courseData[currentSlideIndex];
         const card = slide.cards[cardIndex];
