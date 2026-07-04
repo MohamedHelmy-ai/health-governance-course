@@ -1199,3 +1199,59 @@ main {
         height: 50px !important;
     }
 }
+
+/* ==========================================================================
+   PowerPoint Layout 1280x720 & Virtual Presenter
+   ========================================================================== */
+.slide {
+    width: 1280px !important;
+    height: 720px !important;
+    background-size: 100% 100% !important; /* Force background to cover exactly */
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    position: absolute !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform-origin: center center;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Remove old dark gradients and padding from inner elements if needed */
+.splash-content, .course-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Position Start Button on Left for Splash Screen */
+.slide[data-type="splash"] .btn-start {
+    position: absolute;
+    left: 100px;
+    bottom: 100px;
+    margin: 0 !important;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+}
+
+/* Virtual Presenter Styles */
+.virtual-presenter {
+    position: absolute;
+    bottom: 0px;
+    right: 50px;
+    width: 350px;
+    height: 500px;
+    background-image: url('../images/characte.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    z-index: 100;
+    pointer-events: none;
+    mix-blend-mode: multiply; /* Blends white background into the slide */
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+.virtual-presenter.hidden {
+    display: none;
+}

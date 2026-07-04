@@ -39,30 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scale to fit logic
     function scaleSlide() {
-        if (window.innerWidth <= 768) {
-            const activeSlide = document.querySelector('.slide.active');
-            if (activeSlide) {
-                activeSlide.style.transform = 'none';
-            }
-            return; // Let CSS handle mobile layout
-        }
-        
         const main = document.getElementById('slide-container');
         const activeSlide = document.querySelector('.slide.active');
         if (!main || !activeSlide) return;
         
-        // Temporarily remove transform to measure true scroll height
-        activeSlide.style.transform = 'none';
+        const availableWidth = main.clientWidth;
+        const availableHeight = main.clientHeight;
         
-        const availableWidth = main.clientWidth - 40;
-        const availableHeight = main.clientHeight - 80; // Increased buffer to prevent any bottom cutoff
+        // Fixed PowerPoint aspect ratio 16:9
+        const slideWidth = 1280;
+        const slideHeight = 720;
         
-        const slideWidth = 1200;
-        const slideHeight = Math.max(720, activeSlide.scrollHeight + 40); // Adapt to actual content height!
+        const scale = Math.min(availableWidth / slideWidth, availableHeight / slideHeight);
         
-        const scale = Math.min(availableWidth / slideWidth, availableHeight / slideHeight, 1.2);
-        
-        activeSlide.style.transform = `scale(${scale})`;
+        // Center it perfectly
+        activeSlide.style.position = 'absolute';
+        activeSlide.style.top = '50%';
+        activeSlide.style.left = '50%';
+        activeSlide.style.transform = `translate(-50%, -50%) scale(${scale})`;
     }
     
     window.addEventListener('resize', scaleSlide);
@@ -798,9 +792,48 @@ document.addEventListener('DOMContentLoaded', () => {
         
         slideDiv.innerHTML = html;
         slideContainer.appendChild(slideDiv);
+        
+        // Apply dynamic background
+        if (slide.type === 'splash') {
+            slideDiv.style.backgroundImage = "url('assets/images/intro.png')";
+        } else {
+            slideDiv.style.backgroundImage = "url('assets/images/bg.png')";
+        }
+        
         scaleSlide();
         bindInteractions(slide, index);
         buildTimeline(slide, slideDiv);
+        
+        // Virtual Presenter Logic
+        const vp = document.getElementById('virtual-presenter');
+        if (vp) {
+            if (slide.type === 'splash' || slide.id === 'S05_ACTIVITY') {
+                vp.classList.add('hidden');
+                // stop animation if any
+                gsap.killTweensOf(vp);
+            } else {
+                vp.classList.remove('hidden');
+                // Reset position
+                gsap.set(vp, { y: 100, opacity: 0 });
+                // Animate in
+                gsap.to(vp, { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 1, 
+                    ease: "power2.out",
+                    onComplete: () => {
+                        // Floating idle animation
+                        gsap.to(vp, {
+                            y: 10,
+                            duration: 2,
+                            repeat: -1,
+                            yoyo: true,
+                            ease: "sine.inOut"
+                        });
+                    }
+                });
+            }
+        }
         
         // SCORM Progress Tracking
         if (typeof SCORM !== 'undefined') {
