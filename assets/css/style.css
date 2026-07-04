@@ -1236,3 +1236,72 @@ main {
 .virtual-presenter.hidden {
     display: none;
 }
+
+
+
+/* Adjust slide padding to be natural */
+.slide {
+    padding: 130px 40px 40px 40px !important; /* Top padding clears the logos in bg.png */
+}
+
+/* Allow grid to size naturally without stretching cards */
+.content-grid {
+    height: auto !important;
+    align-content: start;
+}
+
+.glass-card, .gs-item {
+    padding: 15px !important; /* Reduce padding so content fits */
+}
+
+
+/* Advanced Transitions for Header Icons */
+.ch-icon-btn {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transform-origin: center center;
+    will-change: transform, color, filter;
+}
+
+.ch-icon-btn:hover {
+    transform: scale(1.2) translateY(-4px) !important;
+    color: #4CAF50 !important; /* Green glow for interactions */
+    filter: drop-shadow(0 5px 8px rgba(0,0,0,0.3));
+}
+
+.ch-icon-btn:active {
+    transform: scale(0.95) !important;
+}
+
+/* Card Hover Animations to prove motion capability */
+.glass-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+    border-color: #237A74 !important;
+}
+
+
+/* ==========================================================================
+   Restored Missing Player Containers
+   ========================================================================== */
+#player-wrapper {
+    width: 1300px;
+    height: 830px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: center center;
+}
+
+#slide-container {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    overflow: hidden;
+    background: #000000;
+    z-index: 5;
+    flex-shrink: 0;
+}

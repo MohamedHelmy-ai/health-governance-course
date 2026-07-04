@@ -1,0 +1,145 @@
+/* ==========================================================================
+   PowerPoint Layout 1280x720 & Virtual Presenter
+   ========================================================================== */
+.slide {
+    width: 1280px !important;
+    height: 720px !important;
+    background-size: 100% 100% !important; /* Force background to cover exactly */
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    position: absolute !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform-origin: center center;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Remove old dark gradients and padding from inner elements if needed */
+.splash-content, .course-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Position Start Button on Left for Splash Screen */
+.slide[data-type="splash"] .btn-start {
+    position: absolute;
+    left: 100px;
+    bottom: 100px;
+    margin: 0 !important;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+}
+
+/* Virtual Presenter Styles */
+.virtual-presenter {
+    position: absolute;
+    bottom: 0px;
+    right: 50px;
+    width: 350px;
+    height: 500px;
+    background-image: url('../images/characte.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    z-index: 40; /* Below header/footer but above content */
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0;
+}
+
+.virtual-presenter.hidden {
+    display: none;
+}
+
+/* Override header and footer to be full width without floating margins */
+.custom-header {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+}
+.course-footer {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+}
+
+/* Clean white background for letterboxing */
+body, .app-container {
+    background: #ffffff !important;
+}
+
+/* Remove borders/shadows from slide to make it blend with the white background */
+.slide {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Fix header and footer colors if needed, but they are already fine */
+
+/* Fix text colors to be readable on white background */
+.slide {
+    color: #115E59 !important;
+}
+.slide-title, .gs-title {
+    color: #0b3d3a !important;
+}
+.glass-card, .gs-item {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #1a1a1a !important;
+    border: 1px solid #115E59 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+.glass-card p, .gs-item p {
+    color: #333333 !important;
+}
+.step-number {
+    background: #115E59 !important;
+    color: white !important;
+}
+
+/* Splash screen start button positioning fix */
+.slide[data-type="splash"] .btn-start {
+    position: absolute;
+    left: 100px;
+    bottom: 80px;
+    margin: 0 !important;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    background: #115E59 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+}
+
+/* Make header transparent and hide HTML titles since they are baked into bg.png */
+.custom-header {
+    background: transparent !important;
+    box-shadow: none !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    z-index: 1000;
+}
+
+.ch-center {
+    display: none !important; /* Hides the HTML titles that were overlapping the image text */
+}
+
+/* Adjust slide padding to be natural */
+.slide {
+    padding: 130px 40px 40px 40px !important; /* Top padding clears the logos in bg.png */
+}
+
+/* Allow grid to size naturally without stretching cards */
+.content-grid {
+    height: auto !important;
+    align-content: start;
+}
+
+.glass-card, .gs-item {
+    padding: 15px !important; /* Reduce padding so content fits */
+}
+
