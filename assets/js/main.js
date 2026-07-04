@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Calculate linear slides only
                 const linearSlides = courseData.filter(s => !s.isBranch);
                 const currentLinear = courseData.slice(0, currentSlideIndex + 1).filter(s => !s.isBranch).length;
-                pageTotal.textContent = `${currentLinear}/${linearSlides.length}`;
+                pageTotal.innerHTML = `<span style="display:inline-block;direction:ltr">${currentLinear}/${linearSlides.length}</span>`;
             }
             
             const nextIdx = getNextLinearIndex(currentSlideIndex);
