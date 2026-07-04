@@ -76,19 +76,15 @@ body {
    ========================================================================== */
 .custom-header {
     background: #1B7059;
-    border-radius: 40px;
-    position: absolute;
-    top: 20px;
-    left: 40px;
-    width: calc(100% - 400px);
-    max-width: 900px;
+    width: 100%;
     height: 60px;
+    flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     z-index: 50;
+    box-sizing: border-box;
 }
 
 .ch-left {
@@ -223,7 +219,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 40px 60px 40px;
+    padding: 100px 40px 40px 40px; /* Space for logos at top right */
     box-sizing: border-box;
 }
 
@@ -657,17 +653,15 @@ main {
    Footer
    ========================================================================== */
 .course-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
+    height: 50px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding: 10px 20px;
     background: #103333;
     border-top: 2px solid var(--color-teal);
-    height: 50px;
     box-sizing: border-box;
     z-index: 50;
 }
@@ -1372,9 +1366,10 @@ body, .app-container {
 
 #player-wrapper {
     width: 1280px;
-    height: 720px;
-    position: relative;
+    height: 830px;
     background: #ffffff;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
     transform-origin: center center;
     overflow: hidden;
@@ -1398,12 +1393,11 @@ body, .app-container {
 }
 
 #slide-container {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    flex-grow: 0 !important;
+    position: relative !important;
+    width: 1280px !important;
+    height: 720px !important;
+    flex-shrink: 0 !important;
+    overflow: hidden;
 }
 
 .slide {

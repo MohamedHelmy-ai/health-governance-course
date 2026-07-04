@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const availableHeight = app.clientHeight;
         
         const playerWidth = 1280;
-        const playerHeight = 720;
+        const playerHeight = 830;
         
         const scale = Math.min(availableWidth / playerWidth, availableHeight / playerHeight);
         
@@ -273,11 +273,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const footer = document.querySelector('.course-footer');
         const header = document.querySelector('.custom-header');
         if (slide.type === 'splash') {
-            if(footer) footer.style.display = 'none';
-            if(header) header.style.display = 'none';
+            if(footer) footer.style.visibility = 'hidden';
+            if(header) header.style.visibility = 'hidden';
         } else {
-            if(footer) footer.style.display = 'flex';
-            if(header) header.style.display = 'flex';
+            if(footer) footer.style.visibility = 'visible';
+            if(header) header.style.visibility = 'visible';
         }
         
         // Reset playback
