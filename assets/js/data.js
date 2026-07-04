@@ -182,8 +182,21 @@ const courseData = [
             { text: "تحسين الأداء وجودة الرعاية", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>' },
             { text: "تحقيق الأهداف المؤسسية", icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>' }
         ]
+    },
+    {
+        id: "S06_CONFLICT",
+        type: "custom-icon-cards",
+        title: "",
+        duration: 20,
+        cards: [
+            { text: "تأثير تعارض المصالح على المؤسسة", icon: '<svg viewBox="0 0 24 24" fill="#237a74" width="70" height="70"><path d="M5 3v18h14V3H5zm7 16H8v-2h4v2zm0-4H8v-2h4v2zm0-4H8V9h4v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2z"/></svg>' },
+            { text: "تأثير تعارض المصالح على الفرد", icon: '<svg viewBox="0 0 24 24" fill="#1b5a5a" width="70" height="70"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>' },
+            { text: "كيفية التعامل مع تعارض المصالح", icon: '<svg viewBox="0 0 24 24" fill="#237a74" width="70" height="70"><path d="M21 3H3v18h18V3zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>' },
+            { text: "أمثلة تعارض المصالح", icon: '<svg viewBox="0 0 24 24" fill="#1b5a5a" width="70" height="70"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>' }
+        ]
     }
-];
+]
+;
 
 // Allow use in both browser and Node/React if needed
 if (typeof module !== 'undefined' && module.exports) {

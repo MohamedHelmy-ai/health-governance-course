@@ -379,6 +379,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 break;
 
+                        case 'custom-icon-cards':
+                html = `
+                    <div class="slide-content w-100 h-100 d-flex flex-column justify-content-center align-items-center" style="padding: 100px 40px 40px 40px;">
+                        <div class="content-grid w-100" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 40px;">
+                            ${slide.cards.map(c => `
+                                <div class="icon-card gs-item" style="position: relative; background: #f8f9fa; border-radius: 20px; text-align: center; padding: 90px 20px 30px 20px; margin-top: 80px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                                    <div class="icon-circle" style="position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 160px; height: 160px; border-radius: 50%; background: #ffffff; border: 2px solid #e0e0e0; display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden;">
+                                        ${c.icon}
+                                    </div>
+                                    <h4 style="color: #1B5A5A; font-weight: 800; font-size: 22px; line-height: 1.5; margin: 0;">${c.text}</h4>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                break;
+
             case 'custom-models-grid':
                 html = `
                     <h1 class="slide-title gs-title" style="text-align:center; margin-bottom: 1rem; font-size: 1.8rem;">${slide.title}</h1>
