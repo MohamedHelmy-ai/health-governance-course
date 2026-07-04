@@ -39,20 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scale to fit logic
     function scaleSlide() {
-        const app = document.getElementById('app');
-        const player = document.getElementById('player-wrapper');
-        if (!app || !player) return;
+        const container = document.getElementById('slide-container');
+        const scaler = document.getElementById('slide-scaler');
+        if (!container || !scaler) return;
         
-        const availableWidth = app.clientWidth;
-        const availableHeight = app.clientHeight;
+        const availableWidth = container.clientWidth;
+        const availableHeight = container.clientHeight;
         
-        const playerWidth = 1280;
-        const playerHeight = 770;
+        const slideWidth = 1280;
+        const slideHeight = 720;
         
-        const scale = Math.min(availableWidth / playerWidth, availableHeight / playerHeight);
+        const scaleX = availableWidth / slideWidth;
+        const scaleY = availableHeight / slideHeight;
+        const scale = Math.min(scaleX, scaleY);
         
-        // Scale the entire player wrapper
-        player.style.transform = `scale(${scale})`;
+        // Scale the inner scaler container and center it
+        scaler.style.transform = `translate(-50%, -50%) scale(${scale})`;
     }
     
     window.addEventListener('resize', scaleSlide);
@@ -267,7 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render engine
     function renderSlide(index) {
         const slide = courseData[index];
-        slideContainer.innerHTML = ''; 
+        const slideScaler = document.getElementById('slide-scaler');
+        if(slideScaler) slideScaler.innerHTML = ''; 
         
         // Hide footer on splash screens
         const footer = document.querySelector('.course-footer');
@@ -875,7 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         slideDiv.innerHTML = html;
-        slideContainer.appendChild(slideDiv);
+        if(slideScaler) slideScaler.appendChild(slideDiv);
         
         // Apply dynamic background
         if (slide.type === 'splash') {
