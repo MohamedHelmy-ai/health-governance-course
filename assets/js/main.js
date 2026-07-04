@@ -77,28 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // State
     let currentTimeline = null;
 
-    // SCORM API Stub
-    const SCORM = {
-        Initialize: () => true,
-        SetValue: (param, val) => console.log(`SCORM Set: ${param} = ${val}`),
-        Commit: () => true,
-        Finish: () => true
-    };
-    SCORM.Initialize();
-
     // Initialize UI
     function init() {
         renderSlide(currentSlideIndex);
-        
         updateNavButtons();
-        
-        // SCORM Progress Tracking
-        SCORM.setValue("cmi.location", index.toString());
-        if (index === courseData.length - 1) {
-            SCORM.setValue("cmi.completion_status", "completed");
-            SCORM.setValue("cmi.success_status", "passed");
-        }
-        SCORM.commit();
 
         
         btnNext.addEventListener('click', () => {
@@ -822,6 +804,16 @@ document.addEventListener('DOMContentLoaded', () => {
         scaleSlide();
         bindInteractions(slide, index);
         buildTimeline(slide, slideDiv);
+        
+        // SCORM Progress Tracking
+        if (typeof SCORM !== 'undefined') {
+            SCORM.setValue("cmi.location", index.toString());
+            if (index === courseData.length - 1) {
+                SCORM.setValue("cmi.completion_status", "completed");
+                SCORM.setValue("cmi.success_status", "passed");
+            }
+            SCORM.commit();
+        }
     }
 
     function bindInteractions(slide, index) {
