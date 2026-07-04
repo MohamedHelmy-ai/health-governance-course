@@ -191,7 +191,7 @@ const courseData = [
         cards: [
             { 
                 text: "تأثير تعارض المصالح على المؤسسة", 
-                icon: '<img src="assets/images/icon_building.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.src=\'https://via.placeholder.com/180/e8e8e8/237a74?text=Building\'">',
+                icon: '<svg viewBox="0 0 24 24" fill="#237a74" width="80" height="80"><path d="M5 3v18h14V3H5zm7 16H8v-2h4v2zm0-4H8v-2h4v2zm0-4H8V9h4v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2z"/></svg>',
                 details: "يؤدي تعارض المصالح إلى فقدان الثقة في المؤسسة، اتخاذ قرارات متحيزة، وهدر الموارد المالية والبشرية مما يؤثر على جودة الخدمات."
             },
             { 

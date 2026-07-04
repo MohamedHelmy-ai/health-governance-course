@@ -1330,51 +1330,51 @@ document.addEventListener('DOMContentLoaded', () => {
             helpOverlay.classList.remove('active');
         }
     });
-});
-
-// Modal Logic for Cards
-window.openCardDetails = function(cardIndex) {
-    const slide = courseData[currentSlideIndex];
-    const card = slide.cards[cardIndex];
-    
-    let modal = document.getElementById('card-modal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'card-modal';
-        modal.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;';
-        modal.innerHTML = `
-            <div class="modal-content" style="background: white; border-radius: 20px; width: 850px; max-width: 90%; padding: 50px; position: relative; transform: scale(0.8); transition: transform 0.3s; text-align: right;" dir="rtl">
-                <button onclick="closeCardDetails()" style="position: absolute; top: 20px; left: 20px; background: none; border: none; font-size: 40px; cursor: pointer; color: #666; line-height: 1;">&times;</button>
-                <div style="display: flex; gap: 40px; align-items: center;">
-                    <div id="modal-icon" style="width: 200px; height: 200px; flex-shrink: 0; border-radius: 50%; overflow: hidden; border: 1px solid #ccc; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                    <div>
-                        <h2 id="modal-title" style="color: #1B5A5A; font-weight: 900; font-size: 32px; margin-bottom: 20px; margin-top: 0;"></h2>
-                        <p id="modal-desc" style="font-size: 22px; line-height: 1.8; color: #444; margin: 0;"></p>
+    // Modal Logic for Cards
+    window.openCardDetails = function(cardIndex) {
+        const slide = courseData[currentSlideIndex];
+        const card = slide.cards[cardIndex];
+        
+        let modal = document.getElementById('card-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'card-modal';
+            modal.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;';
+            modal.innerHTML = `
+                <div class="modal-content" style="background: white; border-radius: 20px; width: 850px; max-width: 90%; padding: 50px; position: relative; transform: scale(0.8); transition: transform 0.3s; text-align: right;" dir="rtl">
+                    <button onclick="closeCardDetails()" style="position: absolute; top: 20px; left: 20px; background: none; border: none; font-size: 40px; cursor: pointer; color: #666; line-height: 1;">&times;</button>
+                    <div style="display: flex; gap: 40px; align-items: center;">
+                        <div id="modal-icon" style="width: 200px; height: 200px; flex-shrink: 0; border-radius: 50%; overflow: hidden; border: 1px solid #ccc; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
+                        <div>
+                            <h2 id="modal-title" style="color: #1B5A5A; font-weight: 900; font-size: 32px; margin-bottom: 20px; margin-top: 0;"></h2>
+                            <p id="modal-desc" style="font-size: 22px; line-height: 1.8; color: #444; margin: 0;"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-        document.getElementById('player-wrapper').appendChild(modal);
+            `;
+            document.getElementById('player-wrapper').appendChild(modal);
+        }
+        
+        document.getElementById('modal-icon').innerHTML = card.icon;
+        document.getElementById('modal-title').textContent = card.text;
+        document.getElementById('modal-desc').innerHTML = card.details || "التفاصيل غير متوفرة حالياً.";
+        
+        modal.style.display = 'flex';
+        // Trigger reflow for animation
+        void modal.offsetWidth;
+        modal.style.opacity = '1';
+        modal.querySelector('.modal-content').style.transform = 'scale(1)';
     }
-    
-    document.getElementById('modal-icon').innerHTML = card.icon;
-    document.getElementById('modal-title').textContent = card.text;
-    document.getElementById('modal-desc').innerHTML = card.details || "التفاصيل غير متوفرة حالياً.";
-    
-    modal.style.display = 'flex';
-    // Trigger reflow for animation
-    void modal.offsetWidth;
-    modal.style.opacity = '1';
-    modal.querySelector('.modal-content').style.transform = 'scale(1)';
-}
 
-window.closeCardDetails = function() {
-    const modal = document.getElementById('card-modal');
-    if (modal) {
-        modal.style.opacity = '0';
-        modal.querySelector('.modal-content').style.transform = 'scale(0.8)';
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
+    window.closeCardDetails = function() {
+        const modal = document.getElementById('card-modal');
+        if (modal) {
+            modal.style.opacity = '0';
+            modal.querySelector('.modal-content').style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
     }
-}
+
+});
