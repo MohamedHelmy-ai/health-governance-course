@@ -75,15 +75,18 @@ body {
    Header & Footer
    ========================================================================== */
 .custom-header {
-    background: linear-gradient(90deg, #237A74, #1B5A5A);
+    background: #1B7059;
     border-radius: 40px;
-    margin: 20px 40px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    width: calc(100% - 400px);
+    max-width: 900px;
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     z-index: 50;
 }
@@ -131,21 +134,20 @@ body {
 .ch-right {
     display: flex;
     align-items: center;
-    gap: 15px;
 }
 
 .ch-pagination {
-    background: #ffffff;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    background: white;
     color: #1B7059;
-    font-weight: 800;
-    font-size: 1.1rem;
-    padding: 2px 20px;
+    padding: 5px 15px;
     border-radius: 20px;
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
-    letter-spacing: 2px;
 }
 
 .ch-icons {
@@ -211,15 +213,18 @@ main {
 }
 
 .slide {
-    width: 1200px;
-    min-height: 720px; /* Changed from height to min-height to prevent flex top-overflow */
+    width: 100%;
+    height: 100%;
     position: absolute;
+    top: 0; left: 0;
     opacity: 0;
     visibility: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transform-origin: center center;
+    align-items: center;
+    padding: 100px 40px 60px 40px;
+    box-sizing: border-box;
 }
 
 .slide.active {
@@ -1363,8 +1368,9 @@ body, .app-container {
     width: 1280px;
     height: 720px;
     position: relative;
-    background: #ffffff;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15); /* Nice shadow like Storyline */
+    background: url('../images/bg.png') no-repeat center center;
+    background-size: 100% 100%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
     transform-origin: center center;
     overflow: hidden;
 }
