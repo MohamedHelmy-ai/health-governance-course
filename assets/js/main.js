@@ -1012,7 +1012,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
 
                         <!-- Bottom VS Section -->
-                        <div class="qw-bottom gs-qw-bottom" style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 40px;">
+                        <div class="qw-bottom gs-qw-bottom" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 40px;">
                             <div class="qw-right-svg drop-zone" data-zone="governance" style="display: flex; flex-direction: column; align-items: center; padding: 20px; border-radius: 15px; border: 3px dashed transparent; transition: all 0.3s;">
                                 <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="10" y="80" width="80" height="10" fill="#023230"/>
