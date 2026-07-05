@@ -14,6 +14,8 @@ const courseData = [
         audio: "assets/video/slide2.mp4",
         videoSrc: "assets/video/slide2.mp4",
         imageSrc: "assets/images/2.1.png",
+        timeIn: 5,
+        timeOut: 11,
         text: "هيكل تنظيمي يوزع الصلاحيات بين مستويات الإدارة لضمان الشفافية والمساءلة.",
         duration: 15
     }
