@@ -889,6 +889,72 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
         
         // (Keeping Interactive-diagram, Tabs, Comparison, Quiz generic for now to save space, just adding basic GSAP hooks)
+
+            case 'quality-warning':
+                html = `
+                    <div class="quality-warning-layout" style="display: flex; flex-direction: column; width: 100%; height: 100%; align-items: center; justify-content: flex-start; padding: 20px; box-sizing: border-box; text-align: center;">
+                        
+                        <!-- Top SVG -->
+                        <div class="qw-top-svg gs-qw-top" style="width: 300px; margin-bottom: 20px;">
+                            <svg viewBox="0 0 400 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="400" height="300" fill="#f8f9fa" rx="10"/>
+                              <rect x="40" y="260" width="320" height="15" rx="5" fill="#023230" opacity="0.9"/>
+                              <rect x="60" y="275" width="280" height="25" fill="#023230" opacity="0.7"/>
+                              <rect x="160" y="250" width="80" height="10" rx="3" fill="#546E7A"/>
+                              <rect x="185" y="210" width="30" height="40" fill="#78909C"/>
+                              <rect x="70" y="50" width="260" height="160" rx="10" fill="#263238"/>
+                              <rect x="80" y="60" width="240" height="140" rx="5" fill="#E1F5FE"/>
+                              <rect x="90" y="70" width="60" height="10" rx="3" fill="#B0BEC5"/>
+                              <rect x="90" y="85" width="40" height="8" rx="3" fill="#B0BEC5"/>
+                              <rect x="250" y="70" width="60" height="10" rx="3" fill="#B0BEC5"/>
+                              <g class="warning-alert">
+                                <rect x="90" y="110" width="220" height="70" rx="8" fill="#FFEBEE" stroke="#D32F2F" stroke-width="3"/>
+                                <polygon points="120,135 110,155 130,155" fill="#D32F2F"/>
+                                <text x="120" y="152" fill="#FFFFFF" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">!</text>
+                                <text x="200" y="138" fill="#D32F2F" font-family="Cairo, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" direction="rtl">تحذير: 30% من الأطباء متأخرين</text>
+                                <text x="200" y="160" fill="#D32F2F" font-family="Cairo, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" direction="rtl">في تقارير الخروج!</text>
+                              </g>
+                              <path d="M 310 260 L 315 220 L 335 220 L 340 260 Z" fill="#ffffff" stroke="#023230" stroke-width="2"/>
+                              <path d="M 335 230 C 350 230, 350 250, 335 250" fill="none" stroke="#ffffff" stroke-width="3"/>
+                            </svg>
+                        </div>
+
+                        <!-- Text -->
+                        <div class="qw-text" style="font-size: 28px; font-weight: bold; color: #023230; margin-bottom: 30px; font-family: Cairo, sans-serif; direction: rtl;">
+                            ${slide.text.split(' ').map(w => `<span class="qw-word gs-qw-text" style="display:inline-block">${w}</span>`).join('&nbsp;')}
+                        </div>
+
+                        <!-- Bottom VS Section -->
+                        <div class="qw-bottom gs-qw-bottom" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 10px;">
+                            <div class="qw-right-svg">
+                                <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
+                                  <rect x="10" y="80" width="80" height="10" fill="#023230"/>
+                                  <rect x="15" y="70" width="70" height="10" fill="#023230"/>
+                                  <rect x="20" y="40" width="10" height="30" fill="#D4AF37"/>
+                                  <rect x="45" y="40" width="10" height="30" fill="#D4AF37"/>
+                                  <rect x="70" y="40" width="10" height="30" fill="#D4AF37"/>
+                                  <polygon points="50,10 10,40 90,40" fill="#023230"/>
+                                  <circle cx="50" cy="28" r="4" fill="#D4AF37"/>
+                                </svg>
+                            </div>
+                            <div class="qw-vs" style="font-size: 45px; font-weight: 900; color: #D32F2F; font-family: Impact, sans-serif; margin: 0 10px;">
+                                VS
+                            </div>
+                            <div class="qw-left-svg">
+                                <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
+                                  <rect x="25" y="20" width="50" height="65" rx="5" fill="#E1F5FE" stroke="#023230" stroke-width="4"/>
+                                  <rect x="40" y="10" width="20" height="15" rx="3" fill="#023230"/>
+                                  <path d="M 35 45 L 45 55 L 65 30" fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+                                  <path d="M 35 65 L 45 75 L 65 50" fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+                                  <circle cx="65" cy="70" r="15" fill="#B3E5FC" stroke="#023230" stroke-width="3" opacity="0.9"/>
+                                  <line x1="75" y1="80" x2="90" y2="95" stroke="#023230" stroke-width="5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                break;
+
             default:
                 html = `
                     <h1 class="slide-title gs-title">${slide.title}</h1>
@@ -1104,6 +1170,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentTimeline.to('.media-img', {opacity: 0, scale: 0.8, duration: 0.5}, timeOut);
                 currentTimeline.to('.type-word', {opacity: 0, y: -10, duration: 0.5, stagger: 0.05}, timeOut);
             }
+        }
+
+        else if (slide.type === 'quality-warning') {
+            currentTimeline.set('.gs-qw-top', {opacity: 0, y: -50});
+            currentTimeline.set('.gs-qw-text', {opacity: 0, y: 10});
+            currentTimeline.set('.gs-qw-bottom', {opacity: 0, scale: 0.8});
+            
+            currentTimeline.to('.gs-qw-top', {opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.5)"}, 0.5);
+            currentTimeline.to('.gs-qw-text', {opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out"}, "+=0.3");
+            currentTimeline.to('.gs-qw-bottom', {opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)"}, "+=0.2");
         }
         else if (slide.type === 'splash') {
             gsap.fromTo(container.querySelector('.gs-title'), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
