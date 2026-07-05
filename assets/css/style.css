@@ -1088,7 +1088,7 @@ main {
 .ch-slide-tab {
     color: white; 
     font-family: 'Tajawal', sans-serif; 
-    font-size: 13px; /* Reduced size */
+    font-size: 16px; /* Reduced size */
     font-weight: 500;
     margin-top: -3px; /* Pull it slightly up under the white box */
 }
@@ -1239,7 +1239,7 @@ main {
 
 /* تنسيق نص البطاقة */
 .card-text {
-  font-size: 13px;
+  font-size: 16px;
   color: #333333;
   line-height: 1.5;
   font-family: Cairo, Arial, sans-serif;

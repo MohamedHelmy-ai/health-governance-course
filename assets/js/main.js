@@ -1383,7 +1383,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.margin = '5px 0';
                     const cardText = card.querySelector('.card-text');
                     if (cardText) {
-                        cardText.style.fontSize = '10px';
+                        cardText.style.fontSize = '13px';
                         cardText.style.margin = '0';
                     }
                     const badge = card.querySelector('.card-badge');
