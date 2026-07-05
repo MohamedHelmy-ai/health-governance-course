@@ -76,17 +76,18 @@ body {
    Header & Footer
    ========================================================================== */
 .custom-header {
-    width: 1300px; /* Slightly wider than slide */
-    height: 70px;
+    width: 1280px;
+    height: 60px;
     background: #1ca68d; /* Teal pill */
-    border-radius: 40px;
+    border-radius: 30px 30px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    margin-bottom: -15px; /* Overlap slide slightly? Or just sit above it */
+    margin-bottom: 0;
     z-index: 10;
     position: relative;
+    flex-shrink: 0;
 }
 
 .ch-left {
@@ -106,10 +107,10 @@ body {
     background: linear-gradient(to bottom, #ffffff, #e6e6e6);
     color: #1a4f40;
     font-weight: 800;
-    font-size: 1.1rem;
-    padding: 6px 40px;
-    border-radius: 30px;
-    min-width: 450px;
+    font-size: 0.9rem;
+    padding: 4px 30px;
+    border-radius: 20px;
+    min-width: 350px;
     text-align: center;
     box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.1);
     position: relative;
@@ -118,14 +119,14 @@ body {
 
 .ch-slide-tab {
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     transform: translateX(-50%);
     background: #1ca68d;
     color: white;
-    padding: 10px 30px 6px;
-    border-radius: 0 0 15px 15px;
-    font-size: 0.9rem;
+    padding: 6px 20px 4px;
+    border-radius: 0 0 10px 10px;
+    font-size: 0.75rem;
     font-weight: 800;
     z-index: 1;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
@@ -665,6 +666,7 @@ main {
     padding: 0 15px;
     box-sizing: border-box;
     border-radius: 0 0 10px 10px;
+    flex-shrink: 0;
 }
 
 .course-nav {
@@ -926,284 +928,32 @@ main {
 
 
 /* ==========================================================================
-   Mobile Responsiveness
+   Mobile Responsiveness - Scale-to-fit approach
+   The player always maintains 16:9 (1280x720) and scales via JS transform.
+   No layout changes needed - everything just scales uniformly.
    ========================================================================== */
 @media (max-width: 768px) {
+    /* Prevent any scrolling on mobile */
     body {
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow: hidden !important;
+        -webkit-overflow-scrolling: auto;
+        touch-action: none;
     }
+    
     .app-container {
-        height: auto;
-        min-height: 100vh;
-        overflow: visible;
+        overflow: hidden !important;
     }
-    main {
-        overflow: visible;
-        align-items: flex-start;
-        padding-top: 10px;
-        padding-bottom: 20px;
-    }
-    .slide {
-        width: 100% !important;
-        padding: 0 15px;
-        min-height: auto;
-    }
-    
-    /* Header */
-    .custom-header {
-        margin: 10px;
-        padding: 0 10px;
-        border-radius: 15px;
-        height: auto;
-        min-height: 50px;
-        flex-wrap: wrap;
-    }
-    .ch-left {
-        display: none; /* Hide empty space */
-    }
-    .ch-title-box {
-        display: none; /* Hide long title */
-    }
-    .ch-slide-tab {
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: none;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        padding: 5px 10px;
-        margin: 5px 0;
-    }
-    .ch-center {
-        flex: auto;
-        justify-content: flex-start;
-    }
-    .ch-right {
-        gap: 5px;
-    }
-    .ch-pagination {
-        padding: 2px 10px;
-        font-size: 0.9rem;
-    }
+
+    /* Hide help button on mobile since overlay positioning won't work at scale */
     #btnHelp {
-        display: none; /* Help layout relies on absolute desktop coords */
-    }
-    
-    /* Typography */
-    .slide-title { font-size: 1.8rem; text-align: center; }
-    .splash-screen .slide-title { font-size: 2.2rem; }
-    .unit-label { font-size: 1.1rem; }
-    
-    /* Layouts */
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
-    .glass-card {
-        padding: 20px;
-    }
-    
-    /* Stepper & Tabs */
-    .stepper-container {
-        gap: 15px;
-    }
-    .step-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-    .tabs-header {
-        flex-direction: column;
-    }
-    
-    /* Footer */
-    .course-footer {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
-        gap: 15px;
-    }
-    .course-nav {
-        margin: 0;
-        width: 100%;
-        justify-content: space-around;
-    }
-    .progress-wrapper {
-        margin: 0;
-        width: 100%;
-    }
-    
-    /* Slide 5 Activity Layout */
-    .activity-layout {
-        flex-direction: column;
-        gap: 20px;
-        padding: 0;
-    }
-    .activity-col {
-        width: 100%;
-        gap: 15px;
-    }
-    .activity-center-col {
-        width: 100%;
-        order: -1;
-        margin-bottom: 10px;
-    }
-    .activity-center-circle {
-        width: 140px;
-        height: 140px;
-    }
-    .ac-title { font-size: 1rem; }
-    .ac-sub { font-size: 0.85rem; }
-    
-    .activity-connectors { display: none; }
-    .activity-option::before, .activity-option::after { display: none; }
-    
-    .activity-option.left {
-        flex-direction: row; /* Fix reversed layout on left options */
-    }
-    .opt-num {
-        position: relative;
-        transform: none;
-        top: 0;
-        left: 0 !important;
-        right: 0 !important;
-        margin-left: 10px;
-        width: 30px;
-        height: 30px;
-        font-size: 1.1rem;
-    }
-    
-    .activity-footer {
-        flex-wrap: wrap;
-        padding: 15px;
-        gap: 15px;
-        justify-content: center;
-        border-radius: 20px;
-        margin-top: 20px;
-    }
-    .af-item {
-        width: 45%;
-    }
-    .af-arrow {
         display: none;
     }
-    .af-icon {
-        width: 40px;
-        height: 40px;
-    }
     
-    /* Modals */
+    /* Dropdown menu adjusts to scaled context */
     .dropdown-menu {
-        width: 90vw;
-        left: 5vw;
-        right: 5vw;
-        top: 60px;
-    }
-    .info-modal-content {
-        width: 90vw;
-        padding: 20px;
-    }
-}
-
-/* Mobile Flex/Grid Overrides for Inline Styles */
-@media (max-width: 768px) {
-    /* Slide 2: Models Grid */
-    .cards-grid-container {
-        grid-template-columns: 1fr !important;
-    }
-    
-    /* Slide 3: Framework */
-    .framework-slide-container > div:nth-child(2) {
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    
-    /* Slide 4: Pillars */
-    .pillars-container {
-        flex-direction: column !important;
-    }
-    
-    /* Ensure visual definitions in Slide 3 stack */
-    .visual-def-container > div {
-        flex-direction: column !important;
-        height: auto !important;
-    }
-    
-    /* Wrap concept graphics in Slide 3 */
-    .visual-def-container .gs-visual-concept {
-        width: 100% !important;
-    }
-    
-    /* Slide 4: Footer flow items */
-    .footer-flow {
-        flex-wrap: wrap !important;
-        gap: 15px !important;
-    }
-    .footer-flow .gs-flow-item {
-        width: 45% !important;
-        flex: none !important;
-    }
-}
-
-/* ==========================================================================
-   Improved Mobile Layout (Footer & Polish)
-   ========================================================================== */
-@media (max-width: 768px) {
-    /* Beautiful Footer Layout */
-    .course-footer {
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        padding: 15px 20px !important;
-        gap: 15px !important;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-    }
-    
-    .course-nav {
-        width: 100% !important;
-        justify-content: space-between !important;
-        order: 1;
-    }
-    
-    .nav-btn {
-        padding: 8px 20px !important;
-        font-size: 1rem !important;
-    }
-    
-    #btnPlayPause, #btnMute {
-        order: 2;
-        margin: 5px 15px !important;
-        transform: scale(1.3);
-    }
-    
-    .progress-wrapper {
-        order: 3;
-        width: calc(100% - 50px) !important;
-        margin: 15px 45px 10px 10px !important; /* Leave 45px on the right for the replay button */
-    }
-    
-    #btnReplay {
-        right: -40px !important;
-        top: -8px !important;
-        transform: scale(1.3);
-    }
-    
-    /* Improve Start Button on Splash Screen */
-    .btn-start {
-        padding: 15px 40px !important;
-        font-size: 1.5rem !important;
-    }
-    
-    /* Improve Activity Options Spacing */
-    .activity-option {
-        padding: 15px !important;
-        margin-bottom: 10px !important;
-    }
-    
-    .opt-icon-wrapper {
-        width: 50px !important;
-        height: 50px !important;
+        width: 380px;
+        left: 20px;
+        top: 70px;
     }
 }
 
@@ -1241,7 +991,7 @@ main {
 
 /* Adjust slide padding to be natural */
 .slide {
-    padding: 130px 40px 40px 40px !important; /* Top padding clears the logos in bg.png */
+    padding: 80px 30px 20px 30px !important; /* Tighter padding for 16:9 ratio */
 }
 
 /* Allow grid to size naturally without stretching cards */
@@ -1288,20 +1038,65 @@ main {
    Restored Missing Player Containers
    ========================================================================== */
 #player-wrapper {
-    width: 1300px;
-    height: 830px;
+    width: 1280px;
+    height: 720px;
     display: flex;
     flex-direction: column;
     align-items: center;
     transform-origin: center center;
+    position: relative;
 }
 
 #slide-container {
     width: 1280px;
-    height: 720px;
+    height: 620px;
     position: relative;
     overflow: hidden;
     background: #000000;
     z-index: 5;
     flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   Header Refined Layout
+   ========================================================================== */
+.ch-center {
+    flex: 2; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 0px; /* Reduced gap */
+    position: relative;
+    z-index: 20;
+}
+
+.ch-title-box {
+    background: white; 
+    color: #1ca68d; 
+    font-family: 'Tajawal', sans-serif; 
+    font-weight: 800; 
+    font-size: 14px; /* Reduced size */
+    padding: 2px 25px; /* Tighter padding */
+    border-radius: 15px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.ch-slide-tab {
+    color: white; 
+    font-family: 'Tajawal', sans-serif; 
+    font-size: 13px; /* Reduced size */
+    font-weight: 500;
+    margin-top: -3px; /* Pull it slightly up under the white box */
+}
+
+.ch-right {
+    flex: 1; 
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 15px;
+    align-items: center;
 }
