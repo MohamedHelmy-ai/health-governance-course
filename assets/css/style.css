@@ -270,7 +270,8 @@ main {
     transition: var(--transition);
     position: absolute;
     bottom: 50px;
-    left: 80px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .btn-start:hover {
