@@ -888,7 +888,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (slide.type === 'splash') {
             slideDiv.innerHTML = html;
         } else {
-            slideDiv.innerHTML = `<div class="content-scaler" style="transform: scale(0.85); transform-origin: top center; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;">${html}</div>`;
+            slideDiv.innerHTML = `<div class="content-scaler" style="transform: scale(0.85); transform-origin: top center; width: 100%;">${html}</div>`;
         }
         slideContainer.appendChild(slideDiv);
         
@@ -1041,60 +1041,60 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (slide.type === 'framework-split') {
             if (!prefersReducedMotion) {
                 // Intro Title - "إطار الحوكمة الفعال" at 0.5s
-                currentTimeline.fromTo(container.querySelector('.gs-fw-title'), { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.5);
+                currentTimeline.fromTo(container.querySelector('.gs-fw-title'), { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.07);
                 
                 // Right Panel Appears - "مجلس الإدارة" starts at 2.0s
-                currentTimeline.fromTo(container.querySelector('#fw-panel-right'), {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, ease:"power2.out"}, 1.5);
-                currentTimeline.fromTo(container.querySelectorAll('#fw-panel-right .gs-fw-icon'), {opacity: 0, scale: 0}, {opacity: 1, scale: 1, duration: 0.4, ease:"back.out(1.5)"}, 1.8);
+                currentTimeline.fromTo(container.querySelector('#fw-panel-right'), {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, ease:"power2.out"}, 0.22);
+                currentTimeline.fromTo(container.querySelectorAll('#fw-panel-right .gs-fw-icon'), {opacity: 0, scale: 0}, {opacity: 1, scale: 1, duration: 0.4, ease:"back.out(1.5)"}, 0.27);
                 
                 // Draw dotted line for Right Panel
-                currentTimeline.to(container.querySelector('.fw-r-line'), {scaleY: 1, duration: 2, ease:"none"}, 2.0);
+                currentTimeline.to(container.querySelector('.fw-r-line'), {scaleY: 1, duration: 2, ease:"none"}, 0.30);
                 
                 // Right items precise timings
                 const rItems = container.querySelectorAll('.gs-fw-r-item');
                 if(rItems.length >= 5) {
-                    currentTimeline.fromTo(rItems[0], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 2.04); // مجلس الإدارة
-                    currentTimeline.fromTo(rItems[1], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 4.82); // واللجان المتخصصة
-                    currentTimeline.fromTo(rItems[2], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 8.22); // ومصفوفة الصلاحيات
-                    currentTimeline.fromTo(rItems[3], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 12.24); // والسياسات
-                    currentTimeline.fromTo(rItems[4], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 14.14); // والإجراءات
+                    currentTimeline.fromTo(rItems[0], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 0.31); // مجلس الإدارة
+                    currentTimeline.fromTo(rItems[1], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 0.72); // واللجان المتخصصة
+                    currentTimeline.fromTo(rItems[2], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 1.23); // ومصفوفة الصلاحيات
+                    currentTimeline.fromTo(rItems[3], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 1.84); // والسياسات
+                    currentTimeline.fromTo(rItems[4], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 2.12); // والإجراءات
                 }
                 
                 // Show illustration (Clipboard and Shield) - after right panel is done
-                currentTimeline.fromTo(container.querySelector('.gs-fw-illustration'), {opacity: 0, scale:0.5, rotation:-15}, {opacity: 1, scale:1, rotation:0, duration: 0.6, ease:"back.out(1.5)"}, 16.0);
+                currentTimeline.fromTo(container.querySelector('.gs-fw-illustration'), {opacity: 0, scale:0.5, rotation:-15}, {opacity: 1, scale:1, rotation:0, duration: 0.6, ease:"back.out(1.5)"}, 2.40);
 
                 // Left Panel Appears - "مجموعة من الخطوات" at 22.4s
-                currentTimeline.fromTo(container.querySelector('#fw-panel-left'), {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, ease:"power2.out"}, 21.0);
-                currentTimeline.fromTo(container.querySelectorAll('#fw-panel-left .gs-fw-icon'), {opacity: 0, scale: 0}, {opacity: 1, scale: 1, duration: 0.4, ease:"back.out(1.5)"}, 21.5);
+                currentTimeline.fromTo(container.querySelector('#fw-panel-left'), {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.6, ease:"power2.out"}, 3.15);
+                currentTimeline.fromTo(container.querySelectorAll('#fw-panel-left .gs-fw-icon'), {opacity: 0, scale: 0}, {opacity: 1, scale: 1, duration: 0.4, ease:"back.out(1.5)"}, 3.23);
                 
                 // Draw dotted line for Left Panel
-                currentTimeline.to(container.querySelector('.fw-l-line'), {scaleY: 1, duration: 2, ease:"none"}, 22.0);
+                currentTimeline.to(container.querySelector('.fw-l-line'), {scaleY: 1, duration: 2, ease:"none"}, 3.30);
                 
                 // Left items precise timings
                 const lItems = container.querySelectorAll('.gs-fw-l-item');
                 if(lItems.length >= 6) {
-                    currentTimeline.fromTo(lItems[0], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 25.16); // بتحديد القيم والأهداف
-                    currentTimeline.fromTo(lItems[1], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 27.86); // وضع السياسات وآليات الامتثال
-                    currentTimeline.fromTo(lItems[2], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 32.56); // تصميم هياكل
-                    currentTimeline.fromTo(lItems[3], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 36.26); // البيانات الصحية
-                    currentTimeline.fromTo(lItems[4], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 39.56); // وإدارة الموارد البشرية
-                    currentTimeline.fromTo(lItems[5], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 45.04); // بالتطبيق العملي
+                    currentTimeline.fromTo(lItems[0], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 3.77); // بتحديد القيم والأهداف
+                    currentTimeline.fromTo(lItems[1], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 4.18); // وضع السياسات وآليات الامتثال
+                    currentTimeline.fromTo(lItems[2], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 4.88); // تصميم هياكل
+                    currentTimeline.fromTo(lItems[3], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 5.44); // البيانات الصحية
+                    currentTimeline.fromTo(lItems[4], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 5.93); // وإدارة الموارد البشرية
+                    currentTimeline.fromTo(lItems[5], {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease:"back.out(1.2)"}, 6.76); // بالتطبيق العملي
                 }
                 
                 // Footer Appears - "وعند تكامل هذه المكونات" at 52.26s
-                currentTimeline.to(container.querySelector('.gs-fw-footer'), {opacity: 1, y: 0, duration: 0.6, ease:"power2.out"}, 52.0);
+                currentTimeline.to(container.querySelector('.gs-fw-footer'), {opacity: 1, y: 0, duration: 0.6, ease:"power2.out"}, 7.80);
                 
                 // Footer items precise timings
                 const fItems = container.querySelectorAll('.gs-fw-f-item');
                 if(fItems.length >= 4) {
-                    currentTimeline.to(fItems[0], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 53.0); 
-                    currentTimeline.to(fItems[1], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 54.5); 
-                    currentTimeline.to(fItems[2], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 56.0); 
-                    currentTimeline.to(fItems[3], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 57.74); // وترتفع جودة الأداء المؤسسي
+                    currentTimeline.to(fItems[0], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 7.95); 
+                    currentTimeline.to(fItems[1], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 8.17); 
+                    currentTimeline.to(fItems[2], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 8.40); 
+                    currentTimeline.to(fItems[3], {opacity: 1, x: 0, duration: 0.5, ease:"power2.out"}, 8.66); // وترتفع جودة الأداء المؤسسي
                 }
 
             } else {
-                currentTimeline.set(container.querySelectorAll('*'), {opacity: 1, x:0, y:0, scale:1, scaleY:1}, 0);
+                currentTimeline.set(container.querySelectorAll('*'), {opacity: 1, x:0, y:0, scale:1, scaleY:1}, 0.00);
             }
         }
 
