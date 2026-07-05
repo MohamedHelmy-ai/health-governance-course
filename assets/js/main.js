@@ -173,6 +173,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateNavButtons() {
         const slide = courseData[currentSlideIndex];
+        const pageTotal = document.querySelector('.ch-pagination');
+        
+        if (slide.type === "splash") {
+            btnNext.style.visibility = 'hidden';
+            btnPrev.style.visibility = 'hidden';
+            if (pageTotal) pageTotal.style.visibility = 'hidden';
+            return;
+        } else {
+            if (pageTotal) pageTotal.style.visibility = 'visible';
+        }
         
         if (slide.isBranch) {
             btnNext.style.visibility = 'hidden';
