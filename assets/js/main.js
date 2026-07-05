@@ -1530,9 +1530,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-        if (slide.type === 'media-split') {
-            tl.to('.media-img', {opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)'});
-            tl.to('.type-char', {opacity: 1, duration: 0.05, stagger: 0.05}, "+=0.2");
-        }
+
 
         
