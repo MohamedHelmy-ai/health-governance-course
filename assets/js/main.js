@@ -151,11 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Audio event listeners
         audioPlayer.addEventListener('play', () => {
             updatePlayUI(true);
+            if (currentTimeline) currentTimeline.play();
             const vid = document.getElementById('slide-video');
             if (vid) vid.play().catch(e=>console.log("Video play blocked:", e));
         });
         audioPlayer.addEventListener('pause', () => {
             updatePlayUI(false);
+            if (currentTimeline) currentTimeline.pause();
             const vid = document.getElementById('slide-video');
             if (vid) vid.pause();
         });
@@ -169,21 +171,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
         audioPlayer.addEventListener('timeupdate', () => {
             if (currentTimeline && audioPlayer.duration) {
-                // Sync GSAP to audio time
-                currentTimeline.seek(audioPlayer.currentTime);
+                // Only seek GSAP if it's wildly out of sync (e.g. user manually seeking audio)
+                if (Math.abs(currentTimeline.time() - audioPlayer.currentTime) > 0.5) {
+                    currentTimeline.seek(audioPlayer.currentTime);
+                }
                 
                 // Update progress bar
                 let p = (audioPlayer.currentTime / audioPlayer.duration) * 100;
                 progressFill.style.width = `${p}%`;
-                // NEW: Sync slide video if present
+                
+                // Sync slide video if wildly out of sync
                 const vid = document.getElementById('slide-video');
                 if (vid) {
-                    if (Math.abs(vid.currentTime - audioPlayer.currentTime) > 0.25) {
+                    if (Math.abs(vid.currentTime - audioPlayer.currentTime) > 1.0) {
                         vid.currentTime = audioPlayer.currentTime;
                     }
                 }
-                // END NEW
-
             }
         });
     }
