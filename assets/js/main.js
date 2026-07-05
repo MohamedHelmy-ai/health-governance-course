@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (currentTimeline) {
                         currentTimeline.play();
                         updatePlayUI(true);
-                        gsap.to(progressFill, {width: '100%', duration: 30, ease: 'none'});
+                        // Removed fake progress bar
                     }
                 });
             }
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'splash':
                 html = `
                     <div class="splash-screen">
-                        ${slide.buttonText !== 'إغلاق' ? `<button class="btn-start gs-btn" onclick="document.getElementById('btnNext').click()">${slide.buttonText}</button>` : `<button class="btn-start gs-btn" onclick="window.close()">${slide.buttonText}</button>`}
+                        ${slide.buttonText !== 'إغلاق' ? `<button id="btn-start-course" class="btn-start gs-btn">${slide.buttonText}</button>` : `<button class="btn-start gs-btn" onclick="window.close()">${slide.buttonText}</button>`}
                     </div>
                 `;
                 break;
@@ -1117,6 +1117,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function bindInteractions(slide, index) {
+        if (slide.type === 'splash') {
+            const btnStart = document.getElementById('btn-start-course');
+            if (btnStart) {
+                btnStart.addEventListener('click', () => {
+                    const nextIdx = getNextLinearIndex(currentSlideIndex);
+                    if (nextIdx !== -1) {
+                        currentSlideIndex = nextIdx;
+                        renderSlide(currentSlideIndex);
+                        updateNavButtons();
+                        // Direct play with the gesture!
+                        const media = window.activeMedia || audioPlayer;
+                        if (media.paused) togglePlay();
+                    }
+                });
+            }
+        }
+
         if (slide.type === 'tabs') {
             const btns = document.querySelectorAll('.tab-btn');
             btns.forEach(btn => {
