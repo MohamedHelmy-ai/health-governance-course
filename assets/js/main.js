@@ -271,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             }
-            if (currentTimeline && media !== audioPlayer) currentTimeline.play();
         } else {
             media.pause();
             if (currentTimeline) {
@@ -336,11 +335,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     progressFill.style.width = `${p}%`;
                 }
             });
-            vid.addEventListener('play', () => updatePlayUI(true));
-            vid.addEventListener('pause', () => updatePlayUI(false));
+            vid.load(); // Ensure the browser starts fetching immediately
+            vid.addEventListener('play', () => {
+                updatePlayUI(true);
+                if (currentTimeline) currentTimeline.play();
+            });
+            vid.addEventListener('pause', () => {
+                updatePlayUI(false);
+                if (currentTimeline) currentTimeline.pause();
+            });
+            vid.addEventListener('waiting', () => {
+                // If it buffers, pause the timeline so they don't drift!
+                if (currentTimeline) currentTimeline.pause();
+            });
+            vid.addEventListener('playing', () => {
+                // Resumes after buffering
+                if (currentTimeline) currentTimeline.play();
+            });
             vid.addEventListener('ended', () => {
                 updatePlayUI(false);
                 btnNext.classList.add('pulse');
+                if (currentTimeline) currentTimeline.pause();
             });
         } else {
             if (slide.audio) {
@@ -396,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- First element in RTL flex is on the RIGHT. User wants Video on the RIGHT. -->
                         <div class="media-right" style="flex: 1; display: flex; align-items: center; justify-content: center;">
-                            <video id="slide-video" src="${slide.videoSrc}" style="width: 100%; max-height: 80vh; object-fit: contain;" muted playsinline></video>
+                            <video id="slide-video" preload="auto" src="${slide.videoSrc}" style="width: 100%; max-height: 80vh; object-fit: contain;" muted playsinline></video>
                         </div>
 
                         <!-- Second element in RTL flex is on the LEFT. User wants Image and Text on the LEFT. -->
