@@ -503,15 +503,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- Drag and Drop UI (Hidden initially) -->
                         <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
-                            <div class="drop-zones-container">
-                                <div class="drop-zone" data-zone="governance">
-                                    <div class="drop-zone-title">حوكمة</div>
-                                </div>
-                                <div class="drop-zone" data-zone="compliance">
-                                    <div class="drop-zone-title">امتثال</div>
-                                </div>
-                            </div>
-                            
                             <div class="cards-container" dir="rtl">
                                 <div class="draggable-card" draggable="true" id="card1" data-target="governance">
                                     <div class="card-badge">1</div>
@@ -560,15 +551,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- Drag and Drop UI (Hidden initially) -->
                         <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
-                            <div class="drop-zones-container">
-                                <div class="drop-zone" data-zone="governance">
-                                    <div class="drop-zone-title">حوكمة</div>
-                                </div>
-                                <div class="drop-zone" data-zone="compliance">
-                                    <div class="drop-zone-title">امتثال</div>
-                                </div>
-                            </div>
-                            
                             <div class="cards-container" dir="rtl">
                                 <div class="draggable-card" draggable="true" id="card1" data-target="governance">
                                     <div class="card-badge">1</div>
@@ -835,15 +817,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- Drag and Drop UI (Hidden initially) -->
                         <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
-                            <div class="drop-zones-container">
-                                <div class="drop-zone" data-zone="governance">
-                                    <div class="drop-zone-title">حوكمة</div>
-                                </div>
-                                <div class="drop-zone" data-zone="compliance">
-                                    <div class="drop-zone-title">امتثال</div>
-                                </div>
-                            </div>
-                            
                             <div class="cards-container" dir="rtl">
                                 <div class="draggable-card" draggable="true" id="card1" data-target="governance">
                                     <div class="card-badge">1</div>
@@ -1040,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         <!-- Bottom VS Section -->
                         <div class="qw-bottom gs-qw-bottom" style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 40px;">
-                            <div class="qw-right-svg" style="display: flex; flex-direction: column; align-items: center;">
+                            <div class="qw-right-svg drop-zone" data-zone="governance" style="display: flex; flex-direction: column; align-items: center; padding: 20px; border-radius: 15px; border: 3px dashed transparent; transition: all 0.3s;">
                                 <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="10" y="80" width="80" height="10" fill="#023230"/>
                                   <rect x="15" y="70" width="70" height="10" fill="#023230"/>
@@ -1055,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="qw-vs" style="font-size: 45px; font-weight: 900; color: #D32F2F; font-family: Impact, sans-serif; margin: 0 10px;">
                                 VS
                             </div>
-                            <div class="qw-left-svg" style="display: flex; flex-direction: column; align-items: center;">
+                            <div class="qw-left-svg drop-zone" data-zone="compliance" style="display: flex; flex-direction: column; align-items: center; padding: 20px; border-radius: 15px; border: 3px dashed transparent; transition: all 0.3s;">
                                 <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="25" y="20" width="50" height="65" rx="5" fill="#E1F5FE" stroke="#023230" stroke-width="4"/>
                                   <rect x="40" y="10" width="20" height="15" rx="3" fill="#023230"/>
@@ -1069,15 +1042,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- Drag and Drop UI (Hidden initially) -->
                         <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
-                            <div class="drop-zones-container">
-                                <div class="drop-zone" data-zone="governance">
-                                    <div class="drop-zone-title">حوكمة</div>
-                                </div>
-                                <div class="drop-zone" data-zone="compliance">
-                                    <div class="drop-zone-title">امتثال</div>
-                                </div>
-                            </div>
-                            
                             <div class="cards-container" dir="rtl">
                                 <div class="draggable-card" draggable="true" id="card1" data-target="governance">
                                     <div class="card-badge">1</div>
@@ -1526,7 +1490,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.to('.gs-qw-bottom', {opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)"}, 19.5);
             
             // From Second 35: Fade out VS Section and fade in Drag & Drop
-            currentTimeline.to('.gs-qw-bottom', {opacity: 0, scale: 0.8, duration: 0.5}, 35.0);
+            
             currentTimeline.to('.gs-dnd-ui', {opacity: 1, pointerEvents: 'auto', duration: 0.8, ease: "power2.out"}, 35.5);
         }
         else if (slide.type === 'splash') {
