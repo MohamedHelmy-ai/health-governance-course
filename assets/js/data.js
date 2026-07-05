@@ -17,14 +17,16 @@ const courseData = [
         timeIn: 5,
         timeOut: 11,
         text: "هيكل تنظيمي يوزع الصلاحيات بين مستويات الإدارة لضمان الشفافية والمساءلة.",
-        duration: 15
+        audio: "assets/audio/SLIDE 3.mp3",
+        duration: 45
     }
     ,{
         id: "S03_WARNING",
         type: "quality-warning",
         title: "تحذير الجودة",
-        text: "لجنة الجودة في مستشفى أن 30٪ من الأطباء لا يوثقون تقارير الخروج وفق السياسة المعتمدة",
-        duration: 15
+        text: "عدم التزام 30% من الأطباء بسياسة توثيق تقارير الخروج",
+        audio: "assets/audio/SLIDE 3.mp3",
+        duration: 45
     }
 ];
 

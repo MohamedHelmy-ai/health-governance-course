@@ -926,7 +926,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         <!-- Bottom VS Section -->
                         <div class="qw-bottom gs-qw-bottom" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 10px;">
-                            <div class="qw-right-svg">
+                            <div class="qw-right-svg" style="display: flex; flex-direction: column; align-items: center;">
                                 <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="10" y="80" width="80" height="10" fill="#023230"/>
                                   <rect x="15" y="70" width="70" height="10" fill="#023230"/>
@@ -936,11 +936,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                   <polygon points="50,10 10,40 90,40" fill="#023230"/>
                                   <circle cx="50" cy="28" r="4" fill="#D4AF37"/>
                                 </svg>
+                                <div style="font-family: Cairo, sans-serif; font-size: 24px; font-weight: bold; color: #023230; margin-top: 10px;">الحوكمة</div>
                             </div>
                             <div class="qw-vs" style="font-size: 45px; font-weight: 900; color: #D32F2F; font-family: Impact, sans-serif; margin: 0 10px;">
                                 VS
                             </div>
-                            <div class="qw-left-svg">
+                            <div class="qw-left-svg" style="display: flex; flex-direction: column; align-items: center;">
                                 <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="25" y="20" width="50" height="65" rx="5" fill="#E1F5FE" stroke="#023230" stroke-width="4"/>
                                   <rect x="40" y="10" width="20" height="15" rx="3" fill="#023230"/>
@@ -949,6 +950,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   <circle cx="65" cy="70" r="15" fill="#B3E5FC" stroke="#023230" stroke-width="3" opacity="0.9"/>
                                   <line x1="75" y1="80" x2="90" y2="95" stroke="#023230" stroke-width="5" stroke-linecap="round"/>
                                 </svg>
+                                <div style="font-family: Cairo, sans-serif; font-size: 24px; font-weight: bold; color: #023230; margin-top: 10px;">الامتثال</div>
                             </div>
                         </div>
                     </div>
@@ -1173,13 +1175,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         else if (slide.type === 'quality-warning') {
-            currentTimeline.set('.gs-qw-top', {opacity: 0, y: -50});
+            currentTimeline.set('.gs-qw-top', {opacity: 0, scale: 0.5});
             currentTimeline.set('.gs-qw-text', {opacity: 0, y: 10});
             currentTimeline.set('.gs-qw-bottom', {opacity: 0, scale: 0.8});
             
-            currentTimeline.to('.gs-qw-top', {opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.5)"}, 0.5);
-            currentTimeline.to('.gs-qw-text', {opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out"}, "+=0.3");
-            currentTimeline.to('.gs-qw-bottom', {opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)"}, "+=0.2");
+            // From Second 7: Top SVG appears
+            currentTimeline.to('.gs-qw-top', {opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)"}, 7.0);
+            
+            // From Second 11: Text appears
+            currentTimeline.to('.gs-qw-text', {opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out"}, 11.0);
+            
+            // From Second 19: Top SVG and Text disappear, and Bottom VS Section appears
+            currentTimeline.to('.gs-qw-top', {opacity: 0, scale: 0.5, duration: 0.5}, 19.0);
+            currentTimeline.to('.gs-qw-text', {opacity: 0, y: -10, duration: 0.2, stagger: 0.02}, 19.0);
+            
+            currentTimeline.to('.gs-qw-bottom', {opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)"}, 19.5);
         }
         else if (slide.type === 'splash') {
             gsap.fromTo(container.querySelector('.gs-title'), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
