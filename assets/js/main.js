@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- First element in RTL flex is on the RIGHT. User wants Video on the RIGHT. -->
                         <div class="media-right" style="flex: 1; display: flex; align-items: center; justify-content: center;">
-                            <video id="slide-video" preload="auto" src="${slide.videoSrc}" style="width: 100%; max-height: 80vh; object-fit: contain;" muted playsinline></video>
+                            <video id="slide-video" preload="auto" src="${slide.videoSrc}" style="width: 150%; max-height: 100vh; object-fit: contain; transform: translateX(20%);" muted playsinline></video>
                         </div>
 
                         <!-- Second element in RTL flex is on the LEFT. User wants Image and Text on the LEFT. -->
