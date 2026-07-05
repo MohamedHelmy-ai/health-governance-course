@@ -12,7 +12,7 @@ const courseData = [
         type: "media-split",
         title: "هيكل تنظيمي",
         audio: "assets/audio/slide2_new.mp3",
-        videoSrc: "assets/video/slide2_new.mp4",
+        videoSrc: "assets/video/slide2.mp4",
         imageSrc: "assets/images/2.1.png",
         timeIn: 4,
         timeOut: 10,
