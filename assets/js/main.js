@@ -1012,7 +1012,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
 
                         <!-- Bottom VS Section -->
-                        <div class="qw-bottom gs-qw-bottom" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 40px;">
+                        <div class="qw-bottom gs-qw-bottom" style="position: absolute; top: 10px; left: 50%; transform: translate(-50%, -50px); display: flex; align-items: center; justify-content: center; gap: 40px;">
                             <div class="qw-right-svg drop-zone" data-zone="governance" style="display: flex; flex-direction: column; align-items: center; padding: 20px; border-radius: 15px; border: 3px dashed transparent; transition: all 0.3s;">
                                 <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="10" y="80" width="80" height="10" fill="#023230"/>
@@ -1502,7 +1502,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (slide.type === 'quality-warning') {
             currentTimeline.set('.gs-qw-top', {opacity: 0, scale: 0.5});
             currentTimeline.set('.gs-qw-text', {opacity: 0, y: 10});
-            currentTimeline.set('.gs-qw-bottom', {opacity: 0, scale: 0.8});
+            currentTimeline.set('.gs-qw-bottom', {opacity: 0, scale: 0.8, y: -50});
             
             // From Second 7: Top SVG appears
             currentTimeline.to('.gs-qw-top', {opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)"}, 7.0);
