@@ -1580,8 +1580,8 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.set('.gs-part2-line', {opacity: 0, x: 50});
 
             // Enter at 13 seconds
-            currentTimeline.to('.gs-part2', {opacity: 1, scale: 1, duration: 1, ease: \'elastic.out(1, 0.6)\'}, 11);
-            currentTimeline.to('.gs-part2-line', {opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: \'back.out(1.5)\'}, 11.5);
+            currentTimeline.to('.gs-part2', {opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.6)'}, 11);
+            currentTimeline.to('.gs-part2-line', {opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'}, 11.5);
 
             // Exit at 20 seconds
             currentTimeline.to('.gs-part2, .gs-part2-line', {opacity: 0, y: -20, duration: 0.5, stagger: 0.1, ease: 'power2.in'}, 20);
@@ -1594,17 +1594,17 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.to('.gs-part3-line', {opacity: 1, y: 0, duration: 0.8, ease: 'back.out(1.5)'}, 21.5);
 
             // Exit at 28 seconds
-            currentTimeline.to('.gs-part3, .gs-part3-line', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.1, ease: \'power2.in\'}, 27);
+            currentTimeline.to('.gs-part3, .gs-part3-line', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.1, ease: 'power2.in'}, 27);
             // --- PART 4 ANIMATIONS ---
             currentTimeline.set('.gs-part4', {opacity: 0, scale: 0.5});
             currentTimeline.set('.gs-part4-line', {opacity: 0, y: 20});
 
             // Enter at 29 seconds
-            currentTimeline.to('.gs-part4', {opacity: 1, scale: 1, duration: 1, ease: \'elastic.out(1, 0.6)\'}, 28);
-            currentTimeline.to('.gs-part4-line', {opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: \'back.out(1.5)\'}, 28.5);
+            currentTimeline.to('.gs-part4', {opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.6)'}, 28);
+            currentTimeline.to('.gs-part4-line', {opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'}, 28.5);
 
             // Exit at 36 seconds
-            currentTimeline.to(\'.gs-part4, .gs-part4-line\', {opacity: 0, scale: 0.8, duration: 0.5, ease: \'power2.in\'}, 35);
+            currentTimeline.to('.gs-part4, .gs-part4-line', {opacity: 0, scale: 0.8, duration: 0.5, ease: 'power2.in'}, 35);
             // --- PART 5 ANIMATIONS ---
             currentTimeline.set('.gs-part5', {opacity: 0, y: 50});
             currentTimeline.set('.gs-part5-box', {opacity: 0, scale: 0.5, rotationX: 45});
@@ -1624,7 +1624,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.to('.gs-step6', {opacity: 1, scale: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'elastic.out(1, 0.5)'}, 44.5);
 
             // Exit at 53 seconds
-            currentTimeline.to(\'.gs-part6, .gs-step6\', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.05, ease: \'power2.in\'}, 52);
+            currentTimeline.to('.gs-part6, .gs-step6', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.05, ease: 'power2.in'}, 52);
 
 
 
