@@ -1025,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </svg>
                                 <div style="font-family: Cairo, sans-serif; font-size: 24px; font-weight: bold; color: #023230; margin-top: 10px;">الحوكمة</div>
                             </div>
-                            <div class="qw-vs" style="font-size: 45px; font-weight: 900; color: #D32F2F; font-family: Impact, sans-serif; margin: 0 10px;">
+                            <div class="qw-vs" style="font-size: 45px; font-weight: 900; color: #1ca68d; font-family: Impact, sans-serif; margin: 0 10px;">
                                 VS
                             </div>
                             <div class="qw-left-svg drop-zone" data-zone="compliance" style="display: flex; flex-direction: column; align-items: center; padding: 20px; border-radius: 15px; border: 3px dashed transparent; transition: all 0.3s;">
