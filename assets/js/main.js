@@ -306,6 +306,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render engine
     function renderSlide(index) {
+
+        // Reset next button state in case it was disabled by a previous interactive slide
+        const btnNextG = document.getElementById('btnNext');
+        if (btnNextG) btnNextG.classList.remove('disabled-btn');
+
         const slide = courseData[index];
         slideContainer.innerHTML = ''; 
         
@@ -495,6 +500,40 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </div>
                                 </div>
                             `).join('')}
+                        
+                        <!-- Drag and Drop UI (Hidden initially) -->
+                        <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
+                            <div class="drop-zones-container">
+                                <div class="drop-zone" data-zone="governance">
+                                    <div class="drop-zone-title">حوكمة</div>
+                                </div>
+                                <div class="drop-zone" data-zone="compliance">
+                                    <div class="drop-zone-title">امتثال</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cards-container" dir="rtl">
+                                <div class="draggable-card" draggable="true" id="card1" data-target="governance">
+                                    <div class="card-badge">1</div>
+                                    <p class="card-text">إصدار سياسة جديدة تلزم بالتوثيق الإلكتروني خلال 24 ساعة</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card2" data-target="governance">
+                                    <div class="card-badge" style="background-color: #D4AF37; color: #fff;">2</div>
+                                    <p class="card-text">إنشاء لجنة مراجعة تقارير الخروج شهرياً</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card3" data-target="compliance">
+                                    <div class="card-badge">3</div>
+                                    <p class="card-text">إرسال تنبيهات تلقائية للأطباء المتأخرين في التوثيق</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card4" data-target="compliance">
+                                    <div class="card-badge">4</div>
+                                    <p class="card-text">ربط الامتثال بالتوثيق بمؤشرات أداء الطبيب السنوية</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -518,6 +557,40 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <h4 style="color: #1B5A5A; font-weight: 800; font-size: 20px; line-height: 1.4; margin: 0; z-index: 1;">${c.text}</h4>
                                 </div>
                             `}).join('')}
+                        
+                        <!-- Drag and Drop UI (Hidden initially) -->
+                        <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
+                            <div class="drop-zones-container">
+                                <div class="drop-zone" data-zone="governance">
+                                    <div class="drop-zone-title">حوكمة</div>
+                                </div>
+                                <div class="drop-zone" data-zone="compliance">
+                                    <div class="drop-zone-title">امتثال</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cards-container" dir="rtl">
+                                <div class="draggable-card" draggable="true" id="card1" data-target="governance">
+                                    <div class="card-badge">1</div>
+                                    <p class="card-text">إصدار سياسة جديدة تلزم بالتوثيق الإلكتروني خلال 24 ساعة</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card2" data-target="governance">
+                                    <div class="card-badge" style="background-color: #D4AF37; color: #fff;">2</div>
+                                    <p class="card-text">إنشاء لجنة مراجعة تقارير الخروج شهرياً</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card3" data-target="compliance">
+                                    <div class="card-badge">3</div>
+                                    <p class="card-text">إرسال تنبيهات تلقائية للأطباء المتأخرين في التوثيق</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card4" data-target="compliance">
+                                    <div class="card-badge">4</div>
+                                    <p class="card-text">ربط الامتثال بالتوثيق بمؤشرات أداء الطبيب السنوية</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -759,6 +832,40 @@ document.addEventListener('DOMContentLoaded', () => {
                                     ${item.divider ? `<div style="width:2px; height:30px; background:#E2E8F0; margin:0 15px;"></div>` : ''}
                                 </div>
                             `).join('')}
+                        
+                        <!-- Drag and Drop UI (Hidden initially) -->
+                        <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
+                            <div class="drop-zones-container">
+                                <div class="drop-zone" data-zone="governance">
+                                    <div class="drop-zone-title">حوكمة</div>
+                                </div>
+                                <div class="drop-zone" data-zone="compliance">
+                                    <div class="drop-zone-title">امتثال</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cards-container" dir="rtl">
+                                <div class="draggable-card" draggable="true" id="card1" data-target="governance">
+                                    <div class="card-badge">1</div>
+                                    <p class="card-text">إصدار سياسة جديدة تلزم بالتوثيق الإلكتروني خلال 24 ساعة</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card2" data-target="governance">
+                                    <div class="card-badge" style="background-color: #D4AF37; color: #fff;">2</div>
+                                    <p class="card-text">إنشاء لجنة مراجعة تقارير الخروج شهرياً</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card3" data-target="compliance">
+                                    <div class="card-badge">3</div>
+                                    <p class="card-text">إرسال تنبيهات تلقائية للأطباء المتأخرين في التوثيق</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card4" data-target="compliance">
+                                    <div class="card-badge">4</div>
+                                    <p class="card-text">ربط الامتثال بالتوثيق بمؤشرات أداء الطبيب السنوية</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -959,6 +1066,40 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </svg>
                                 <div style="font-family: Cairo, sans-serif; font-size: 24px; font-weight: bold; color: #023230; margin-top: 10px;">الامتثال</div>
                             </div>
+                        
+                        <!-- Drag and Drop UI (Hidden initially) -->
+                        <div class="dnd-container gs-dnd-ui" style="opacity: 0; pointer-events: none; margin-top: 20px;">
+                            <div class="drop-zones-container">
+                                <div class="drop-zone" data-zone="governance">
+                                    <div class="drop-zone-title">حوكمة</div>
+                                </div>
+                                <div class="drop-zone" data-zone="compliance">
+                                    <div class="drop-zone-title">امتثال</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cards-container" dir="rtl">
+                                <div class="draggable-card" draggable="true" id="card1" data-target="governance">
+                                    <div class="card-badge">1</div>
+                                    <p class="card-text">إصدار سياسة جديدة تلزم بالتوثيق الإلكتروني خلال 24 ساعة</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card2" data-target="governance">
+                                    <div class="card-badge" style="background-color: #D4AF37; color: #fff;">2</div>
+                                    <p class="card-text">إنشاء لجنة مراجعة تقارير الخروج شهرياً</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card3" data-target="compliance">
+                                    <div class="card-badge">3</div>
+                                    <p class="card-text">إرسال تنبيهات تلقائية للأطباء المتأخرين في التوثيق</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                                <div class="draggable-card" draggable="true" id="card4" data-target="compliance">
+                                    <div class="card-badge">4</div>
+                                    <p class="card-text">ربط الامتثال بالتوثيق بمؤشرات أداء الطبيب السنوية</p>
+                                    <div class="success-checkmark">✔</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -1118,6 +1259,175 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function bindInteractions(slide, index) {
+
+        if (slide.type === 'quality-warning') {
+            const btnNext = document.getElementById('btnNext');
+            const cards = document.querySelectorAll('.draggable-card');
+            const zones = document.querySelectorAll('.drop-zone');
+            
+            // Audio elements for feedback
+            const correctAudio = new Audio('assets/audio/اجابة صحيحة.mp3');
+            const incorrectAudio = new Audio('assets/audio/اجابة خاطئة.mp3');
+            
+            // Disable next button initially
+            if (btnNext) {
+                btnNext.classList.add('disabled-btn');
+            }
+            
+            let solvedCount = 0;
+            
+            function checkCompletion() {
+                if (solvedCount === 4) {
+                    if (btnNext) {
+                        btnNext.classList.remove('disabled-btn');
+                        // Add a small bounce animation to the next button
+                        gsap.fromTo(btnNext, {scale: 0.8}, {scale: 1, duration: 0.5, ease: "back.out(1.5)"});
+                    }
+                }
+            }
+            
+            // --- Desktop Drag & Drop (HTML5) ---
+            let draggedCard = null;
+            
+            cards.forEach(card => {
+                card.addEventListener('dragstart', (e) => {
+                    if (card.classList.contains('solved')) {
+                        e.preventDefault();
+                        return;
+                    }
+                    draggedCard = card;
+                    card.classList.add('is-dragging');
+                    // Required for Firefox
+                    e.dataTransfer.setData('text/plain', card.id);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                
+                card.addEventListener('dragend', () => {
+                    card.classList.remove('is-dragging');
+                    draggedCard = null;
+                });
+                
+                // --- Mobile Touch Support ---
+                let initialX = 0, initialY = 0;
+                let currentX = 0, currentY = 0;
+                let isDragging = false;
+                let clone = null;
+                
+                card.addEventListener('touchstart', (e) => {
+                    if (card.classList.contains('solved')) return;
+                    isDragging = true;
+                    draggedCard = card;
+                    const touch = e.touches[0];
+                    initialX = touch.clientX;
+                    initialY = touch.clientY;
+                    
+                    // Create visual clone for smooth mobile drag
+                    const rect = card.getBoundingClientRect();
+                    clone = card.cloneNode(true);
+                    clone.style.position = 'fixed';
+                    clone.style.left = rect.left + 'px';
+                    clone.style.top = rect.top + 'px';
+                    clone.style.width = rect.width + 'px';
+                    clone.style.height = rect.height + 'px';
+                    clone.style.margin = '0';
+                    clone.style.zIndex = '9999';
+                    clone.style.pointerEvents = 'none';
+                    clone.style.opacity = '0.8';
+                    clone.style.transform = 'scale(1.05)';
+                    document.body.appendChild(clone);
+                    card.style.opacity = '0.4';
+                }, {passive: false});
+                
+                card.addEventListener('touchmove', (e) => {
+                    if (!isDragging || !clone) return;
+                    e.preventDefault(); // Prevent scrolling
+                    const touch = e.touches[0];
+                    currentX = touch.clientX - initialX;
+                    currentY = touch.clientY - initialY;
+                    clone.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.05)`;
+                }, {passive: false});
+                
+                card.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    if (clone) {
+                        clone.remove();
+                        clone = null;
+                    }
+                    card.style.opacity = '1';
+                    card.style.transform = 'none';
+                    
+                    // Find drop zone at touch end location
+                    const touch = e.changedTouches[0];
+                    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+                    const zone = dropTarget ? dropTarget.closest('.drop-zone') : null;
+                    
+                    if (zone) {
+                        handleDrop(card, zone);
+                    } else {
+                        // Revert animation
+                        triggerError(card);
+                    }
+                    
+                    draggedCard = null;
+                });
+            });
+            
+            zones.forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+                
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('drag-over');
+                });
+                
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    if (draggedCard) {
+                        handleDrop(draggedCard, zone);
+                    }
+                });
+            });
+            
+            function handleDrop(card, zone) {
+                const targetZone = card.getAttribute('data-target');
+                const currentZone = zone.getAttribute('data-zone');
+                
+                if (targetZone === currentZone) {
+                    // Correct!
+                    correctAudio.currentTime = 0;
+                    correctAudio.play().catch(e => console.log('Audio error:', e));
+                    
+                    zone.appendChild(card);
+                    card.classList.add('solved');
+                    card.setAttribute('draggable', 'false');
+                    
+                    // Add a small pop animation to the card
+                    gsap.fromTo(card, {scale: 1.1}, {scale: 1, duration: 0.3, ease: "back.out(2)"});
+                    
+                    solvedCount++;
+                    checkCompletion();
+                } else {
+                    // Incorrect!
+                    triggerError(card);
+                }
+            }
+            
+            function triggerError(card) {
+                incorrectAudio.currentTime = 0;
+                incorrectAudio.play().catch(e => console.log('Audio error:', e));
+                
+                card.classList.remove('shake');
+                // Trigger reflow to restart animation
+                void card.offsetWidth;
+                card.classList.add('shake');
+            }
+        }
+
         if (slide.type === 'splash') {
             const btnStart = document.getElementById('btn-start-course');
             if (btnStart) {
@@ -1214,6 +1524,10 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.to('.gs-qw-text', {opacity: 0, y: -10, duration: 0.2, stagger: 0.02}, 19.0);
             
             currentTimeline.to('.gs-qw-bottom', {opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)"}, 19.5);
+            
+            // From Second 35: Fade out VS Section and fade in Drag & Drop
+            currentTimeline.to('.gs-qw-bottom', {opacity: 0, scale: 0.8, duration: 0.5}, 35.0);
+            currentTimeline.to('.gs-dnd-ui', {opacity: 1, pointerEvents: 'auto', duration: 0.8, ease: "power2.out"}, 35.5);
         }
         else if (slide.type === 'splash') {
             gsap.fromTo(container.querySelector('.gs-title'), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });

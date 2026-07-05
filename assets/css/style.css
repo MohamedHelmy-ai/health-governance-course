@@ -1130,3 +1130,191 @@ main {
   50% { opacity: 0.6; transform: scale(1.02); }
   100% { opacity: 1; transform: scale(1); }
 }
+
+
+/* ========================================= */
+/* Drag and Drop Activity Styles */
+/* ========================================= */
+
+.dnd-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    z-index: 10;
+}
+
+.drop-zones-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+}
+
+.drop-zone {
+    width: 300px;
+    min-height: 250px;
+    border: 3px dashed #023230;
+    border-radius: 15px;
+    background-color: rgba(225, 245, 254, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.drop-zone.drag-over {
+    background-color: rgba(2, 50, 48, 0.1);
+    border-color: #D4AF37;
+}
+
+.drop-zone-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #023230;
+    margin-bottom: 15px;
+    font-family: Cairo, sans-serif;
+    pointer-events: none;
+}
+
+/* تنسيق الحاوية الرئيسية للبطاقات */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px;
+  background-color: #f8f9fa; /* لون خلفية هادئ يبرز البطاقات */
+  border-radius: 15px;
+}
+
+/* تنسيق البطاقة الأساسي */
+.draggable-card {
+  background-color: #ffffff;
+  width: 200px;
+  border: 2px solid #E0E0E0;
+  border-top: 6px solid #023230; /* الشريط العلوي الأخضر الداكن */
+  border-radius: 10px;
+  padding: 15px 10px;
+  text-align: center;
+  position: relative;
+  cursor: grab; /* شكل مؤشر اليد للسحب */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  touch-action: none; /* Prevent scrolling on mobile while dragging */
+}
+
+/* تأثير عند تمرير الماوس (Hover) */
+.draggable-card:not(.solved):hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: #D4AF37; /* يتغير الإطار للذهبي */
+}
+
+/* تأثير أثناء مسك البطاقة (Active/Dragging) */
+.draggable-card:not(.solved):active, .draggable-card.is-dragging {
+  cursor: grabbing;
+  transform: scale(0.95);
+  z-index: 100;
+}
+
+/* تنسيق رقم البطاقة (Badge) */
+.card-badge {
+  background-color: #023230;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  pointer-events: none;
+}
+
+/* تنسيق نص البطاقة */
+.card-text {
+  font-size: 13px;
+  color: #333333;
+  line-height: 1.5;
+  font-family: Cairo, Arial, sans-serif;
+  font-weight: 600;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* علامة الصح (مخفية افتراضياً وتظهر فقط عند الإجابة الصحيحة) */
+.success-checkmark {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  background-color: #2E7D32; /* لون أخضر للنجاح */
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: 3px solid #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* الكلاس الذي سيتم إضافته بواسطة الجافاسكريبت عند إفلات البطاقة في المكان الصحيح */
+.draggable-card.solved {
+  border-color: #2E7D32;
+  border-top-color: #2E7D32;
+  cursor: default; /* إلغاء مؤشر السحب */
+  pointer-events: none; /* منع تحريكها مرة أخرى */
+  opacity: 0.9;
+  transform: none !important;
+  box-shadow: none;
+  margin-top: 10px;
+}
+
+.draggable-card.solved .success-checkmark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Shake Animation for Incorrect Drop */
+@keyframes shake-error {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake-error 0.4s ease-in-out;
+  border-color: #D32F2F !important;
+  border-top-color: #D32F2F !important;
+}
+
+/* Disabled Next Button */
+.nav-btn.disabled-btn {
+  background-color: #B0BEC5 !important;
+  color: #78909C !important;
+  pointer-events: none;
+  cursor: not-allowed;
+  box-shadow: none;
+}
