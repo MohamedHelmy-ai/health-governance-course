@@ -264,6 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Fake progress bar for missing audio (assume 30s)
                         gsap.to(progressFill, {width: '100%', duration: 30, ease: 'none'});
                     }
+                    const vid = document.getElementById('slide-video');
+                    if (vid) vid.play().catch(e=>console.log("Video fallback blocked:", e));
                 });
             }
         } else {
@@ -301,31 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide footer on splash screens
         const footer = document.querySelector('.course-footer');
         const header = document.querySelector('.custom-header');
-        if (slide.type === 'media-split') {
-            const timeIn = slide.timeIn || 0;
-            const timeOut = slide.timeOut || null;
-
-            if (timeIn > 0) {
-                currentTimeline.set('.media-img, .type-word', {opacity: 0});
-            }
-
-            currentTimeline.fromTo('.media-img', 
-                {opacity: 0, scale: 0.5}, 
-                {opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)'}, 
-                timeIn);
-                
-            currentTimeline.fromTo('.type-word', 
-                {opacity: 0, y: 10}, 
-                {opacity: 1, y: 0, duration: 0.2, stagger: 0.1}, 
-                timeIn + 0.5);
-
-            if (timeOut) {
-                currentTimeline.to('.media-img', {opacity: 0, scale: 0.8, duration: 0.5}, timeOut);
-                currentTimeline.to('.type-word', {opacity: 0, y: -10, duration: 0.5, stagger: 0.05}, timeOut);
-            }
-        }
-        
-        else if (slide.type === 'splash') {
+        if (slide.type === 'splash') {
             if(footer) footer.style.visibility = 'hidden';
             if(header) header.style.visibility = 'hidden';
         } else {
@@ -956,31 +934,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (slide.type === 'framework-split') scaleVal = 0.85;
         else if (slide.type === 'three-pillars-flow') scaleVal = 0.95;
         
-        if (slide.type === 'media-split') {
-            const timeIn = slide.timeIn || 0;
-            const timeOut = slide.timeOut || null;
-
-            if (timeIn > 0) {
-                currentTimeline.set('.media-img, .type-word', {opacity: 0});
-            }
-
-            currentTimeline.fromTo('.media-img', 
-                {opacity: 0, scale: 0.5}, 
-                {opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)'}, 
-                timeIn);
-                
-            currentTimeline.fromTo('.type-word', 
-                {opacity: 0, y: 10}, 
-                {opacity: 1, y: 0, duration: 0.2, stagger: 0.1}, 
-                timeIn + 0.5);
-
-            if (timeOut) {
-                currentTimeline.to('.media-img', {opacity: 0, scale: 0.8, duration: 0.5}, timeOut);
-                currentTimeline.to('.type-word', {opacity: 0, y: -10, duration: 0.5, stagger: 0.05}, timeOut);
-            }
-        }
-        
-        else if (slide.type === 'splash') {
+        if (slide.type === 'splash') {
             slideDiv.innerHTML = html;
         } else if (scaleVal !== 1.0) {
             slideDiv.innerHTML = `<div class="smart-scaler" style="transform: scale(${scaleVal}); transform-origin: center center; width: 100%;">${html}</div>`;
@@ -990,31 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
         slideContainer.appendChild(slideDiv);
         
         // Apply dynamic background
-        if (slide.type === 'media-split') {
-            const timeIn = slide.timeIn || 0;
-            const timeOut = slide.timeOut || null;
-
-            if (timeIn > 0) {
-                currentTimeline.set('.media-img, .type-word', {opacity: 0});
-            }
-
-            currentTimeline.fromTo('.media-img', 
-                {opacity: 0, scale: 0.5}, 
-                {opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)'}, 
-                timeIn);
-                
-            currentTimeline.fromTo('.type-word', 
-                {opacity: 0, y: 10}, 
-                {opacity: 1, y: 0, duration: 0.2, stagger: 0.1}, 
-                timeIn + 0.5);
-
-            if (timeOut) {
-                currentTimeline.to('.media-img', {opacity: 0, scale: 0.8, duration: 0.5}, timeOut);
-                currentTimeline.to('.type-word', {opacity: 0, y: -10, duration: 0.5, stagger: 0.05}, timeOut);
-            }
-        }
-        
-        else if (slide.type === 'splash') {
+        if (slide.type === 'splash') {
             slideDiv.style.backgroundImage = "url('assets/images/intro.png')";
         } else {
             slideDiv.style.backgroundImage = "url('assets/images/bg.png')";
@@ -1024,15 +954,6 @@ document.addEventListener('DOMContentLoaded', () => {
         bindInteractions(slide, index);
         buildTimeline(slide, slideDiv);
         
-        // Auto-play next slide if it's not a splash
-        if (slide.type !== 'splash') {
-            setTimeout(() => {
-                if (audioPlayer.paused) {
-                    togglePlay();
-                }
-            }, 300);
-        }
-
         // Virtual Presenter Logic
         const vp = document.getElementById('virtual-presenter');
         if (vp) {
@@ -1138,7 +1059,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentTimeline.to('.type-word', {opacity: 0, y: -10, duration: 0.5, stagger: 0.05}, timeOut);
             }
         }
-        
         else if (slide.type === 'splash') {
             gsap.fromTo(container.querySelector('.gs-title'), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
             gsap.fromTo(container.querySelector('.gs-btn'), { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.5)", delay: 0.3 });
