@@ -387,6 +387,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             
                             
+                            
+                            <!-- FIFTH PART (36s to 43s) -->
+                            <div class="part-5-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                                <img src="assets/images/2.5.png" class="media-img-5 gs-part5" style="max-width: 90%; max-height: 35vh; object-fit: contain; margin-bottom: 30px; opacity: 0;">
+                                <div class="gs-part5-box" style="background: rgba(2, 50, 48, 0.9); backdrop-filter: blur(10px); border: 3px solid #1ca68d; border-radius: 25px; padding: 30px 40px; box-shadow: 0 10px 40px rgba(28, 166, 141, 0.4); opacity: 0; transform: scale(0.8);">
+                                    <h3 style="color: white; font-size: 28px; line-height: 1.6; text-align: center; margin: 0; font-weight: bold;">
+                                        توزيع الصلاحيات <br>
+                                        <span style="color: #CFA043; font-size: 34px; text-shadow: 0 2px 10px rgba(207, 160, 67, 0.5);">(المالية والتنظيمية)</span> <br>
+                                        لضبط اتخاذ القرار.
+                                    </h3>
+                                </div>
+                            </div>
+
                             <!-- FOURTH PART (29s to 36s) -->
                             <div class="part-4-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%);">
                                 <img src="assets/images/2.4.png" class="media-img-4 gs-part4" style="max-width: 90%; max-height: 25vh; object-fit: contain; margin-bottom: 20px; opacity: 0;">
@@ -1563,6 +1576,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Exit at 36 seconds
             currentTimeline.to('.gs-part4, .gs-part4-line', {opacity: 0, scale: 0.8, duration: 0.5, ease: 'power2.in'}, 36);
+            // --- PART 5 ANIMATIONS ---
+            currentTimeline.set('.gs-part5', {opacity: 0, y: 50});
+            currentTimeline.set('.gs-part5-box', {opacity: 0, scale: 0.5, rotationX: 45});
+
+            // Enter at 36 seconds
+            currentTimeline.to('.gs-part5', {opacity: 1, y: 0, duration: 1, ease: 'back.out(1.5)'}, 36);
+            currentTimeline.to('.gs-part5-box', {opacity: 1, scale: 1, rotationX: 0, duration: 1, ease: 'elastic.out(1, 0.5)'}, 36.5);
+
+            // Exit at 43 seconds
+            currentTimeline.to('.gs-part5, .gs-part5-box', {opacity: 0, y: -30, duration: 0.5, ease: 'power2.in'}, 43);
+
+
 
 
 

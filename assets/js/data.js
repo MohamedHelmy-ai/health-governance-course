@@ -17,7 +17,7 @@ const courseData = [
         timeIn: 5,
         timeOut: 11,
         text: "هيكل تنظيمي يوزع الصلاحيات بين مستويات الإدارة لضمان الشفافية والمساءلة.",
-        duration: 40
+        duration: 45
     }
     ,{
         id: "S03_WARNING",
