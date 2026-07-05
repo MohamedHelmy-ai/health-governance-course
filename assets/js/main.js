@@ -1242,10 +1242,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             function checkCompletion() {
                 if (solvedCount === 4) {
-                    if (btnNext) {
-                        btnNext.classList.remove('disabled-btn');
+                    const btn = document.getElementById('btnNext');
+                    if (btn) {
+                        btn.classList.remove('disabled-btn');
+                        btn.disabled = false;
+                        btn.style.opacity = '1';
+                        btn.style.pointerEvents = 'auto';
+                        btn.style.cursor = 'pointer';
                         // Add a small bounce animation to the next button
-                        gsap.fromTo(btnNext, {scale: 0.8}, {scale: 1, duration: 0.5, ease: "back.out(1.5)"});
+                        gsap.fromTo(btn, {scale: 0.8}, {scale: 1, duration: 0.5, ease: "back.out(1.5)"});
                     }
                 }
             }
@@ -1367,8 +1372,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     correctAudio.play().catch(e => console.log('Audio error:', e));
                     
                     zone.appendChild(card);
+                    card.classList.remove('shake');
                     card.classList.add('solved');
                     card.setAttribute('draggable', 'false');
+                    
+                    // Shrink card to prevent overflow
+                    card.style.width = '180px';
+                    card.style.minHeight = '50px';
+                    card.style.padding = '8px';
+                    card.style.margin = '5px 0';
+                    const cardText = card.querySelector('.card-text');
+                    if (cardText) {
+                        cardText.style.fontSize = '10px';
+                        cardText.style.margin = '0';
+                    }
+                    const badge = card.querySelector('.card-badge');
+                    if (badge) {
+                        badge.style.width = '20px';
+                        badge.style.height = '20px';
+                        badge.style.fontSize = '12px';
+                    }
+                    const check = card.querySelector('.success-checkmark');
+                    if (check) {
+                        check.style.fontSize = '30px';
+                    }
                     
                     // Add a small pop animation to the card
                     gsap.fromTo(card, {scale: 1.1}, {scale: 1, duration: 0.3, ease: "back.out(2)"});
