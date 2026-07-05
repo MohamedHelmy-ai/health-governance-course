@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audioPlayer.pause();
         
                 // Load new audio and prevent double-loading if video is same as audio
-        const vid = document.getElementById('slide-video');
+        const vid = document.getElementById('slide-video') || slideDiv.querySelector('#slide-video');
         if (vid && slide.videoSrc === slide.audio) {
             audioPlayer.removeAttribute('src'); // Prevent double load
             vid.muted = false; // Let video play the audio
