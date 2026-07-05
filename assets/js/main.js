@@ -1391,11 +1391,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // We don't auto-play immediately to respect browser auto-play policies.
-        // User clicks Play in the footer, or we try to play automatically.
-        setTimeout(() => {
-            togglePlay();
-        }, 500);
+        // Play synchronously to retain user gesture token
+        togglePlay();
     }
 
     init();
