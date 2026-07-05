@@ -386,6 +386,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
 
                             
+                            
+                            <!-- FOURTH PART (29s to 36s) -->
+                            <div class="part-4-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%);">
+                                <img src="assets/images/2.4.png" class="media-img-4 gs-part4" style="max-width: 90%; max-height: 25vh; object-fit: contain; margin-bottom: 20px; opacity: 0;">
+                                <div class="media-text-4 gs-part4-triangle" style="position: relative; width: 100%; max-width: 400px; padding: 40px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; opacity: 0;">
+                                    <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+                                        <polygon points="50,0 100,100 0,100" fill="#1B3B5A" opacity="0.95" />
+                                    </svg>
+                                    <div class="line-item gs-part4-line" style="color: white; font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 15px; opacity: 0; transform: translateY(20px);">لجنة الجودة:<br>مراجعة الأخطاء والتحسين.</div>
+                                    <div class="line-item gs-part4-line" style="color: #CFA043; font-size: 22px; font-weight: bold; text-align: center; opacity: 0; transform: translateY(20px);">لجنة الامتثال:<br>متابعة البرامج وتضارب المصالح.</div>
+                                </div>
+                            </div>
+
                             <!-- THIRD PART (21s to 28s) -->
                             <div class="part-3-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%);">
                                 <img src="assets/images/2.3.png" class="media-img-3 gs-part3" style="max-width: 90%; max-height: 40vh; object-fit: contain; margin-bottom: 20px; opacity: 0;">
@@ -1542,6 +1555,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Exit at 28 seconds
             currentTimeline.to('.gs-part3, .gs-part3-line', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.1, ease: 'power2.in'}, 28);
+            // --- PART 4 ANIMATIONS ---
+            currentTimeline.set('.gs-part4', {opacity: 0, scale: 0.5});
+            currentTimeline.set('.gs-part4-triangle', {opacity: 0, y: 50, scale: 0.8});
+            currentTimeline.set('.gs-part4-line', {opacity: 0, y: 20});
+
+            // Enter at 29 seconds
+            currentTimeline.to('.gs-part4', {opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.6)'}, 29);
+            currentTimeline.to('.gs-part4-triangle', {opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'back.out(1.5)'}, 29.3);
+            currentTimeline.to('.gs-part4-line', {opacity: 1, y: 0, duration: 0.5, stagger: 0.2, ease: 'power2.out'}, 29.8);
+
+            // Exit at 36 seconds
+            currentTimeline.to('.gs-part4, .gs-part4-triangle', {opacity: 0, scale: 0.8, duration: 0.5, ease: 'power2.in'}, 36);
+
+
 
 
 
