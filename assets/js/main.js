@@ -150,18 +150,21 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Audio event listeners
         audioPlayer.addEventListener('play', () => {
+            if (window.activeMedia && window.activeMedia !== audioPlayer) return;
             updatePlayUI(true);
             if (currentTimeline) currentTimeline.play();
             const vid = document.getElementById('slide-video');
             if (vid) vid.play().catch(e=>console.log("Video play blocked:", e));
         });
         audioPlayer.addEventListener('pause', () => {
+            if (window.activeMedia && window.activeMedia !== audioPlayer) return;
             updatePlayUI(false);
             if (currentTimeline) currentTimeline.pause();
             const vid = document.getElementById('slide-video');
             if (vid) vid.pause();
         });
         audioPlayer.addEventListener('ended', () => {
+            if (window.activeMedia && window.activeMedia !== audioPlayer) return;
             updatePlayUI(false);
             if (currentSlideIndex < totalSlides - 1) {
                 // Optional: Auto-advance to next slide
@@ -170,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         audioPlayer.addEventListener('timeupdate', () => {
+            if (window.activeMedia && window.activeMedia !== audioPlayer) return;
             if (currentTimeline && audioPlayer.duration) {
                 // Only seek GSAP if it's wildly out of sync (e.g. user manually seeking audio)
                 if (Math.abs(currentTimeline.time() - audioPlayer.currentTime) > 0.5) {
@@ -254,25 +258,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function togglePlay() {
-        if (audioPlayer.paused) {
-            const playPromise = audioPlayer.play();
+        const media = window.activeMedia || audioPlayer;
+        if (media.paused) {
+            const playPromise = media.play();
             if (playPromise !== undefined) {
                 playPromise.catch(e => {
-                    console.log("Audio play blocked or missing:", e);
-                    // Fallback: play timeline directly if no audio
+                    console.log("Media play blocked:", e);
                     if (currentTimeline) {
                         currentTimeline.play();
                         updatePlayUI(true);
-                        
-                        // Fake progress bar for missing audio (assume 30s)
                         gsap.to(progressFill, {width: '100%', duration: 30, ease: 'none'});
                     }
-                    const vid = document.getElementById('slide-video');
-                    if (vid) vid.play().catch(e=>console.log("Video fallback blocked:", e));
                 });
             }
+            if (currentTimeline && media !== audioPlayer) currentTimeline.play();
         } else {
-            audioPlayer.pause();
+            media.pause();
             if (currentTimeline) {
                 currentTimeline.pause();
                 gsap.killTweensOf(progressFill);
@@ -318,14 +319,39 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentTimeline) currentTimeline.kill();
         audioPlayer.pause();
         
-                // Load new audio
-        if (slide.audio) {
-            audioPlayer.src = slide.audio;
+                // Load new audio and prevent double-loading if video is same as audio
+        const vid = document.getElementById('slide-video');
+        if (vid && slide.videoSrc === slide.audio) {
+            audioPlayer.removeAttribute('src'); // Prevent double load
+            vid.muted = false; // Let video play the audio
+            window.activeMedia = vid;
+            
+            // Route video events to UI
+            vid.addEventListener('timeupdate', () => {
+                if (currentTimeline && vid.duration) {
+                    if (Math.abs(currentTimeline.time() - vid.currentTime) > 0.5) {
+                        currentTimeline.seek(vid.currentTime);
+                    }
+                    let p = (vid.currentTime / vid.duration) * 100;
+                    progressFill.style.width = `${p}%`;
+                }
+            });
+            vid.addEventListener('play', () => updatePlayUI(true));
+            vid.addEventListener('pause', () => updatePlayUI(false));
+            vid.addEventListener('ended', () => {
+                updatePlayUI(false);
+                btnNext.classList.add('pulse');
+            });
         } else {
-            // Expecting files like assets/audio/S01_INTRO.mp3
-            audioPlayer.src = `assets/audio/${slide.id}.mp3`;
+            if (slide.audio) {
+                audioPlayer.src = slide.audio;
+            } else {
+                audioPlayer.src = `assets/audio/${slide.id}.mp3`;
+            }
+            audioPlayer.load();
+            window.activeMedia = audioPlayer;
+            if (vid) vid.muted = true;
         }
-        audioPlayer.load();
 
         updatePlayUI(false);
         progressFill.style.width = '0%';
