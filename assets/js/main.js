@@ -318,58 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentTimeline) currentTimeline.kill();
         audioPlayer.pause();
         
-                // Load new audio and prevent double-loading if video is same as audio
-        const vid = document.getElementById('slide-video') || slideDiv.querySelector('#slide-video');
-        if (vid && slide.videoSrc === slide.audio) {
-            audioPlayer.removeAttribute('src'); // Prevent double load
-            vid.muted = false; // Let video play the audio
-            window.activeMedia = vid;
-            
-            // Route video events to UI
-            vid.addEventListener('timeupdate', () => {
-                if (currentTimeline && vid.duration) {
-                    if (Math.abs(currentTimeline.time() - vid.currentTime) > 0.5) {
-                        currentTimeline.seek(vid.currentTime);
-                    }
-                    let p = (vid.currentTime / vid.duration) * 100;
-                    progressFill.style.width = `${p}%`;
-                }
-            });
-            vid.load(); // Ensure the browser starts fetching immediately
-            vid.addEventListener('play', () => {
-                updatePlayUI(true);
-                if (currentTimeline) currentTimeline.play();
-            });
-            vid.addEventListener('pause', () => {
-                updatePlayUI(false);
-                if (currentTimeline) currentTimeline.pause();
-            });
-            vid.addEventListener('waiting', () => {
-                // If it buffers, pause the timeline so they don't drift!
-                if (currentTimeline) currentTimeline.pause();
-            });
-            vid.addEventListener('playing', () => {
-                // Resumes after buffering
-                if (currentTimeline) currentTimeline.play();
-            });
-            vid.addEventListener('ended', () => {
-                updatePlayUI(false);
-                btnNext.classList.add('pulse');
-                if (currentTimeline) currentTimeline.pause();
-            });
-        } else {
-            if (slide.audio) {
-                audioPlayer.src = slide.audio;
-            } else {
-                audioPlayer.src = `assets/audio/${slide.id}.mp3`;
-            }
-            audioPlayer.load();
-            window.activeMedia = audioPlayer;
-            if (vid) vid.muted = true;
-        }
-
-        updatePlayUI(false);
-        progressFill.style.width = '0%';
+                progressFill.style.width = '0%';
         
         // Update custom header
         const headerTitle = document.getElementById('header-slide-title');
@@ -986,6 +935,59 @@ document.addEventListener('DOMContentLoaded', () => {
             slideDiv.innerHTML = `<div class="smart-scaler" style="width: 100%;">${html}</div>`;
         }
         slideContainer.appendChild(slideDiv);
+
+        // Load new audio and prevent double-loading if video is same as audio
+        const vid = document.getElementById('slide-video');
+        if (vid && slide.videoSrc === slide.audio) {
+            audioPlayer.removeAttribute('src'); // Prevent double load
+            vid.muted = false; // Let video play the audio
+            window.activeMedia = vid;
+            
+            // Route video events to UI
+            vid.addEventListener('timeupdate', () => {
+                if (currentTimeline && vid.duration) {
+                    if (Math.abs(currentTimeline.time() - vid.currentTime) > 0.5) {
+                        currentTimeline.seek(vid.currentTime);
+                    }
+                    let p = (vid.currentTime / vid.duration) * 100;
+                    progressFill.style.width = `${p}%`;
+                }
+            });
+            vid.load(); // Ensure the browser starts fetching immediately
+            vid.addEventListener('play', () => {
+                updatePlayUI(true);
+                if (currentTimeline) currentTimeline.play();
+            });
+            vid.addEventListener('pause', () => {
+                updatePlayUI(false);
+                if (currentTimeline) currentTimeline.pause();
+            });
+            vid.addEventListener('waiting', () => {
+                // If it buffers, pause the timeline so they don't drift!
+                if (currentTimeline) currentTimeline.pause();
+            });
+            vid.addEventListener('playing', () => {
+                // Resumes after buffering
+                if (currentTimeline) currentTimeline.play();
+            });
+            vid.addEventListener('ended', () => {
+                updatePlayUI(false);
+                btnNext.classList.add('pulse');
+                if (currentTimeline) currentTimeline.pause();
+            });
+        } else {
+            if (slide.audio) {
+                audioPlayer.src = slide.audio;
+            } else {
+                audioPlayer.src = `assets/audio/${slide.id}.mp3`;
+            }
+            audioPlayer.load();
+            window.activeMedia = audioPlayer;
+            if (vid) vid.muted = true;
+        }
+
+        updatePlayUI(false);
+        
         
         // Apply dynamic background
         if (slide.type === 'splash') {
