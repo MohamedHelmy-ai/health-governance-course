@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (slide.type === "splash") {
             btnNext.style.visibility = 'hidden';
             btnPrev.style.visibility = 'hidden';
+            btnNext.disabled = false; // Always re-enable so the start button works!
             if (pageTotal) pageTotal.style.visibility = 'hidden';
             return;
         } else {
@@ -312,9 +313,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentTimeline) currentTimeline.kill();
         audioPlayer.pause();
         
-        // Load new audio
-        // Expecting files like assets/audio/S01_INTRO.mp3
-        audioPlayer.src = `assets/audio/${slide.id}.mp3`;
+                // Load new audio
+        if (slide.audio) {
+            audioPlayer.src = slide.audio;
+        } else {
+            // Expecting files like assets/audio/S01_INTRO.mp3
+            audioPlayer.src = `assets/audio/${slide.id}.mp3`;
+        }
         audioPlayer.load();
 
         updatePlayUI(false);
@@ -354,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
 
                         case 'media-split':
-                const chars = slide.text.split('').map(c => `<span class="type-char" style="display:inline-block; font-family: Cairo, sans-serif;">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+                const chars = slide.text.split(' ').map(w => `<span class="type-word" style="display:inline-block; font-family: Cairo, sans-serif;">${w}</span>`).join('&nbsp;');
                 html = `
                     <div class="media-split-layout" style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: space-between; gap: 40px; padding: 40px; box-sizing: border-box;">
                         
@@ -947,6 +952,15 @@ document.addEventListener('DOMContentLoaded', () => {
         bindInteractions(slide, index);
         buildTimeline(slide, slideDiv);
         
+        // Auto-play next slide if it's not a splash
+        if (slide.type !== 'splash') {
+            setTimeout(() => {
+                if (audioPlayer.paused) {
+                    togglePlay();
+                }
+            }, 300);
+        }
+
         // Virtual Presenter Logic
         const vp = document.getElementById('virtual-presenter');
         if (vp) {
