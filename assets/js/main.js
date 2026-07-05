@@ -1013,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Load new audio and prevent double-loading if video is same as audio
         const vid = document.getElementById('slide-video');
         if (vid && slide.videoSrc === slide.audio) {
-            audioPlayer.removeAttribute('src'); // Prevent double load
+            audioPlayer.pause(); // Just pause it, don't remove attribute as it corrupts audioPlayer in some browsers
             vid.muted = false; // Let video play the audio
             window.activeMedia = vid;
             
