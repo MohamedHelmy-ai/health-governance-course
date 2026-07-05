@@ -110,7 +110,7 @@ body {
     font-size: 0.9rem;
     padding: 4px 30px;
     border-radius: 20px;
-    min-width: 350px;
+    min-width: 450px;
     text-align: center;
     box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.1);
     position: relative;
@@ -970,9 +970,9 @@ main {
 .virtual-presenter {
     position: absolute;
     bottom: 0px;
-    right: 50px;
-    width: 350px;
-    height: 500px;
+    right: -20px;
+    width: 450px;
+    height: 620px;
     background-image: url('../images/characte.jpeg');
     background-size: contain;
     background-repeat: no-repeat;
