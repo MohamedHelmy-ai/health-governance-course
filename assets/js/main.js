@@ -481,8 +481,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             case 'custom-models-grid':
                 html = `
-<div style=\"transform: scale(0.85); transform-origin: top center; width:100%;\">
-
                     <h1 class="slide-title gs-title" style="text-align:center; margin-bottom: 1rem; font-size: 1.8rem;">${slide.title}</h1>
                     <div class="cards-grid-container content-grid" style="direction:rtl; max-width: 1200px; margin: 0 auto; padding-bottom: 30px;">
                         
@@ -646,14 +644,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
 
                     </div>
-                
-</div>
-`;
+                `;
                 break;
 
             case 'framework-split':
                 html = `
-                    <div class="framework-slide-container" style="display:flex; flex-direction:column; gap:20px; width:100%; max-width:1200px; margin:0 auto; direction:rtl; transform: scale(0.75); transform-origin: top center;">
+                    <div class="framework-slide-container" style="display:flex; flex-direction:column; gap:20px; width:100%; max-width:1200px; margin:0 auto; direction:rtl;">
                         <h1 class="gs-fw-title" style="text-align:right; font-size:2rem; color:#1E293B; margin-bottom:10px;">${slide.title}</h1>
                         
                         <div style="display:flex; gap:30px; width:100%;">
@@ -889,7 +885,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
         
-        slideDiv.innerHTML = html;
+        if (slide.type === 'splash') {
+            slideDiv.innerHTML = html;
+        } else {
+            slideDiv.innerHTML = `<div class="content-scaler" style="transform: scale(0.85); transform-origin: top center; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;">${html}</div>`;
+        }
         slideContainer.appendChild(slideDiv);
         
         // Apply dynamic background
