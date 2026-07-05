@@ -1,0 +1,25 @@
+audioPlayer.addEventListener('play', () => updatePlayUI(true));
+        audioPlayer.addEventListener('pause', () => updatePlayUI(false));
+        audioPlayer.addEventListener('ended', () => {
+            updatePlayUI(false);
+            if (currentSlideIndex < totalSlides - 1) {
+                // Optional: Auto-advance to next slide
+                // btnNext.click();
+            }
+        });
+        
+        audioPlayer.addEventListener('timeupdate', () => {
+            if (currentTimeline && audioPlayer.duration) {
+                // Sync GSAP to audio time
+                currentTimeline.seek(audioPlayer.currentTime);
+                
+                // Update progress bar
+                let p = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressFill.style.width = `${p}%`;
+            }
+        });
+    }
+
+    function updateNavButtons() {
+        const slide = courseData[currentSlideIndex];
+        const pageTotal = document.querySelector('.ch-paginat

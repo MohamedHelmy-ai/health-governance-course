@@ -1,0 +1,36 @@
+             audioPlayer.currentTime = 0;
+                audioPlayer.play().catch(e => console.log("Replay blocked:", e));
+            });
+        }
+        
+        // Audio event listeners
+        audioPlayer.addEventListener('play', () => updatePlayUI(true));
+        audioPlayer.addEventListener('pause', () => updatePlayUI(false));
+        audioPlayer.addEventListener('ended', () => {
+            updatePlayUI(false);
+            if (currentSlideIndex < totalSlides - 1) {
+                // Optional: Auto-advance to next slide
+                // btnNext.click();
+            }
+        });
+        
+        audioPlayer.addEventListener('timeupdate', () => {
+            if (currentTimeline && audioPlayer.duration) {
+                // Sync GSAP to audio time
+                currentTimeline.seek(audioPlayer.currentTime);
+                
+                // Update progress bar
+                let p = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressFill.style.width = `${p}%`;
+            }
+        });
+    }
+
+    function updateNavButtons() {
+        const slide = courseData[currentSlideIndex];
+        const pageTotal = document.querySelector('.ch-pagination');
+        
+        if (slide.type === "splash") {
+            btnNext.style.visibility = 'hidden';
+            btnPrev.style.visibility = 'hidden';
+            if (pageTotal) pageTotal.style.visi

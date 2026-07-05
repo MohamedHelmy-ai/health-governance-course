@@ -1,0 +1,7 @@
+case 'splash':
+                html = `
+                    <div class="splash-screen">
+                        ${slide.buttonText !== 'إغلاق' ? `<button class="btn-start gs-btn" onclick="document.getElementById('btnNext').click()">${slide.buttonText}</button>` : `<button class="btn-start gs-btn" onclick="window.close()">${slide.buttonText}</button>`}
+                    </div>
+                `;
+                break;

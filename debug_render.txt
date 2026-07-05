@@ -1,0 +1,22 @@
+function renderSlide(index) {
+        const slide = courseData[index];
+        slideContainer.innerHTML = ''; 
+        
+        // Hide footer on splash screens
+        const footer = document.querySelector('.course-footer');
+        const header = document.querySelector('.custom-header');
+        
+        let scaleVal = 1.0;
+        if (slide.type === 'framework-split') scaleVal = 0.85;
+        else if (slide.type === 'three-pillars-flow') scaleVal = 0.95;
+        
+        if (slide.type === 'splash') {
+            slideDiv.innerHTML = html;
+        } else if (scaleVal !== 1.0) {
+            slideDiv.innerHTML = `<div class="smart-scaler" style="transform: scale(${scaleVal}); transform-origin: center center; width: 100%;">${html}</div>`;
+        } else {
+            slideDiv.innerHTML = `<div class="smart-scaler" style="width: 100%;">${html}</div>`;
+        }
+
+        slideContainer.appendChild(slideDiv);
+  

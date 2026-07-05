@@ -1,0 +1,32 @@
+ext.style.cursor = (nextIdx === -1) ? 'not-allowed' : 'pointer';
+            }
+        }
+    }
+
+    function togglePlay() {
+        if (audioPlayer.paused) {
+            const playPromise = audioPlayer.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(e => {
+                    console.log("Audio play blocked or missing:", e);
+                    // Fallback: play timeline directly if no audio
+                    if (currentTimeline) {
+                        currentTimeline.play();
+                        updatePlayUI(true);
+                        
+                        // Fake progress bar for missing audio (assume 30s)
+                        gsap.to(progressFill, {width: '100%', duration: 30, ease: 'none'});
+                    }
+                });
+            }
+        } else {
+            audioPlayer.pause();
+            if (currentTimeline) {
+                currentTimeline.pause();
+                gsap.killTweensOf(progressFill);
+            }
+        }
+    }
+
+    function updatePlayUI(playing) {
+        const iconPlay = document.getEl

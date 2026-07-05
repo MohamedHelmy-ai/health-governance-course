@@ -149,8 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Audio event listeners
-        audioPlayer.addEventListener('play', () => updatePlayUI(true));
-        audioPlayer.addEventListener('pause', () => updatePlayUI(false));
+        audioPlayer.addEventListener('play', () => {
+            updatePlayUI(true);
+            const vid = document.getElementById('slide-video');
+            if (vid) vid.play().catch(e=>console.log("Video play blocked:", e));
+        });
+        audioPlayer.addEventListener('pause', () => {
+            updatePlayUI(false);
+            const vid = document.getElementById('slide-video');
+            if (vid) vid.pause();
+        });
         audioPlayer.addEventListener('ended', () => {
             updatePlayUI(false);
             if (currentSlideIndex < totalSlides - 1) {
@@ -167,6 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update progress bar
                 let p = (audioPlayer.currentTime / audioPlayer.duration) * 100;
                 progressFill.style.width = `${p}%`;
+                // NEW: Sync slide video if present
+                const vid = document.getElementById('slide-video');
+                if (vid) {
+                    if (Math.abs(vid.currentTime - audioPlayer.currentTime) > 0.25) {
+                        vid.currentTime = audioPlayer.currentTime;
+                    }
+                }
+                // END NEW
+
             }
         });
     }
@@ -336,6 +353,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 break;
 
+                        case 'media-split':
+                const chars = slide.text.split('').map(c => `<span class="type-char" style="opacity:0; display:inline-block; font-family: Cairo, sans-serif;">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+                html = `
+                    <div class="media-split-layout" style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: space-between; gap: 40px; padding: 40px; box-sizing: border-box;">
+                        <div class="media-left" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                            <img src="${slide.imageSrc}" class="media-img" style="max-width: 90%; max-height: 50vh; object-fit: contain; opacity: 0; transform: scale(0.5); margin-bottom: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <div class="media-text" style="font-size: 32px; line-height: 1.6; color: #1B5A5A; direction: rtl; text-align: center; font-weight: bold; width: 100%;">
+                                ${chars}
+                            </div>
+                        </div>
+                        <div class="media-right" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                            <video id="slide-video" src="${slide.videoSrc}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" muted playsinline></video>
+                        </div>
+                    </div>
+                `;
+                break;
             case 'info':
             case 'stepper':
                 html = `
@@ -1497,3 +1530,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+        if (slide.type === 'media-split') {
+            tl.to('.media-img', {opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)'});
+            tl.to('.type-char', {opacity: 1, duration: 0.05, stagger: 0.05}, "+=0.2");
+        }
+
+        

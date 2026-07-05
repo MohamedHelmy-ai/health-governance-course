@@ -1,0 +1,21 @@
+dex);
+                    updateNavButtons();
+                }
+            }
+        });
+
+
+        btnPlayPause.addEventListener('click', togglePlay);
+        btnMute.addEventListener('click', toggleMute);
+        
+        const progressWrapper = document.querySelector('.progress-wrapper');
+        if (progressWrapper) {
+            progressWrapper.style.cursor = 'pointer';
+            progressWrapper.addEventListener('click', (e) => {
+                if (audioPlayer && audioPlayer.duration && !isNaN(audioPlayer.duration)) {
+                    const rect = progressWrapper.getBoundingClientRect();
+                    // In RTL, the progress starts from the right edge
+                    const clickX = rect.right - e.clientX;
+                    let percentage = clickX / rect.width;
+                    percentage = Math.max(0, Math.min(1, percentage));
+                    audioPlayer.cur
