@@ -265,10 +265,12 @@ main {
     font-size: 2rem;
     font-weight: 800;
     padding: 15px 60px;
-    margin-top: 40px;
     cursor: pointer;
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
     transition: var(--transition);
+    position: absolute;
+    bottom: 50px;
+    left: 80px;
 }
 
 .btn-start:hover {

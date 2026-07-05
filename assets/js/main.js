@@ -2041,7 +2041,6 @@ document.addEventListener('DOMContentLoaded', () => {
             label.style.bottom = `${labelBottom}px`;
             
             // Set line height
-            const line = label.querySelector('.help-line');
             if (line) line.style.height = `${t.height}px`;
         });
         
@@ -2083,7 +2082,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const labelTop = distToTop + t.height;
             label.style.top = `${labelTop}px`;
             
-            const line = label.querySelector('.help-line');
             if (line) line.style.height = `${t.height}px`;
         });
     }
