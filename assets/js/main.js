@@ -388,6 +388,34 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             
                             
+                            
+                            <!-- SIXTH PART (44s to 53s) -->
+                            <div class="part-6-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                                <img src="assets/images/2.6.png" class="media-img-6 gs-part6" style="max-width: 90%; max-height: 25vh; object-fit: contain; margin-bottom: 30px; opacity: 0;">
+                                
+                                <div class="gs-part6-flow" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; width: 100%; direction: rtl;">
+                                    
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #1ca68d, #147361); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(28, 166, 141, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">التوجيه <br><span style="color: #FFEBEE; font-size: 16px;">(المجلس)</span></div>
+                                    
+                                    <div class="flow-arrow gs-step6" style="color: #1ca68d; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #1B3B5A, #0e2031); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(27, 59, 90, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">التحليل <br><span style="color: #FFEBEE; font-size: 16px;">(اللجان)</span></div>
+                                    
+                                    <div class="flow-arrow gs-step6" style="color: #1B3B5A; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #CFA043, #A57D2C); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(207, 160, 67, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">الضبط <br><span style="color: #FFEBEE; font-size: 16px;">(المصفوفة)</span></div>
+                                    
+                                    <div class="flow-arrow gs-step6" style="color: #CFA043; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #023230, #011c1b); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(2, 50, 48, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">الإلزام <br><span style="color: #FFEBEE; font-size: 16px;">(السياسات)</span></div>
+                                    
+                                    <div class="flow-arrow gs-step6" style="color: #023230; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #D32F2F, #9a0007); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">التنفيذ <br><span style="color: #FFEBEE; font-size: 16px;">(الإجراءات)</span></div>
+
+                                </div>
+                            </div>
+
                             <!-- FIFTH PART (36s to 43s) -->
                             <div class="part-5-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%); pointer-events: none;">
                                 <img src="assets/images/2.5.png" class="media-img-5 gs-part5" style="max-width: 90%; max-height: 35vh; object-fit: contain; margin-bottom: 30px; opacity: 0;">
@@ -1586,6 +1614,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Exit at 43 seconds
             currentTimeline.to('.gs-part5, .gs-part5-box', {opacity: 0, y: -30, duration: 0.5, ease: 'power2.in'}, 43);
+            // --- PART 6 ANIMATIONS ---
+            currentTimeline.set('.gs-part6', {opacity: 0, y: 50});
+            currentTimeline.set('.gs-step6', {opacity: 0, scale: 0.1, y: 20});
+
+            // Enter at 44 seconds
+            currentTimeline.to('.gs-part6', {opacity: 1, y: 0, duration: 1, ease: 'back.out(1.5)'}, 44);
+            currentTimeline.to('.gs-step6', {opacity: 1, scale: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'elastic.out(1, 0.5)'}, 44.5);
+
+            // Exit at 53 seconds
+            currentTimeline.to('.gs-part6, .gs-step6', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.05, ease: 'power2.in'}, 53);
+
+
 
 
 
