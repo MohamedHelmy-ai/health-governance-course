@@ -354,18 +354,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
 
                         case 'media-split':
-                const chars = slide.text.split('').map(c => `<span class="type-char" style="opacity:0; display:inline-block; font-family: Cairo, sans-serif;">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+                const chars = slide.text.split('').map(c => `<span class="type-char" style="display:inline-block; font-family: Cairo, sans-serif;">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
                 html = `
                     <div class="media-split-layout" style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: space-between; gap: 40px; padding: 40px; box-sizing: border-box;">
+                        
+                        <!-- First element in RTL flex is on the RIGHT. User wants Video on the RIGHT. -->
+                        <div class="media-right" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                            <video id="slide-video" src="${slide.videoSrc}" style="width: 100%; max-height: 80vh; object-fit: contain;" muted playsinline></video>
+                        </div>
+
+                        <!-- Second element in RTL flex is on the LEFT. User wants Image and Text on the LEFT. -->
                         <div class="media-left" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                            <img src="${slide.imageSrc}" class="media-img" style="max-width: 90%; max-height: 50vh; object-fit: contain; opacity: 0; transform: scale(0.5); margin-bottom: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="${slide.imageSrc}" class="media-img" style="max-width: 90%; max-height: 40vh; object-fit: contain; margin-bottom: 30px;">
                             <div class="media-text" style="font-size: 32px; line-height: 1.6; color: #1B5A5A; direction: rtl; text-align: center; font-weight: bold; width: 100%;">
                                 ${chars}
                             </div>
                         </div>
-                        <div class="media-right" style="flex: 1; display: flex; align-items: center; justify-content: center;">
-                            <video id="slide-video" src="${slide.videoSrc}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" muted playsinline></video>
-                        </div>
+
                     </div>
                 `;
                 break;
