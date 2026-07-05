@@ -898,12 +898,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             case 'quality-warning':
                 html = `
-                    <div class="quality-warning-layout" style="display: grid; width: 100%; height: 100%; place-items: center; padding: 20px; box-sizing: border-box; text-align: center;">
+                    <div class="quality-warning-layout" style="display: flex; flex-direction: column; width: 100%; height: 100%; align-items: center; justify-content: flex-start; padding: 20px; box-sizing: border-box; text-align: center; position: relative;">
                         
-                        <!-- Phase 1 -->
-                        <div class="qw-phase-1" style="grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; pointer-events: none;">
-                            <!-- Top SVG -->
-                            <div class="qw-top-svg gs-qw-top" style="width: 300px; margin-bottom: 20px;">
+                        <!-- Top SVG -->
+                        <div class="qw-top-svg gs-qw-top" style="width: 300px; margin-bottom: 20px;">
                             <svg viewBox="0 0 400 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
                               <rect width="400" height="300" fill="#f8f9fa" rx="10"/>
                               <rect x="40" y="260" width="320" height="15" rx="5" fill="#023230" opacity="0.9"/>
@@ -931,10 +929,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="qw-text" style="font-size: 28px; font-weight: bold; color: #023230; margin-bottom: 30px; font-family: Cairo, sans-serif; direction: rtl;">
                             ${slide.text.split(' ').map(w => `<span class="qw-word gs-qw-text" style="display:inline-block">${w}</span>`).join('&nbsp;')}
                         </div>
-                        </div> <!-- End Phase 1 -->
+                        
 
                         <!-- Bottom VS Section -->
-                        <div class="qw-bottom gs-qw-bottom" style="grid-area: 1 / 1; display: flex; align-items: center; justify-content: center; gap: 40px;">
+                        <div class="qw-bottom gs-qw-bottom" style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 40px;">
                             <div class="qw-right-svg" style="display: flex; flex-direction: column; align-items: center;">
                                 <svg viewBox="0 0 100 100" width="130" height="130" xmlns="http://www.w3.org/2000/svg">
                                   <rect x="10" y="80" width="80" height="10" fill="#023230"/>
