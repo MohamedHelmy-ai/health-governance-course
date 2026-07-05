@@ -389,29 +389,30 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             
                             
+                            
                             <!-- SIXTH PART (44s to 53s) -->
                             <div class="part-6-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%); pointer-events: none;">
                                 <img src="assets/images/2.6.png" class="media-img-6 gs-part6" style="max-width: 90%; max-height: 25vh; object-fit: contain; margin-bottom: 30px; opacity: 0;">
                                 
-                                <div class="gs-part6-flow" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; width: 100%; direction: rtl;">
+                                <div class="gs-part6-flow" style="display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; direction: rtl;">
                                     
-                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #1ca68d, #147361); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(28, 166, 141, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">التوجيه <br><span style="color: #FFEBEE; font-size: 16px;">(المجلس)</span></div>
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #1ca68d, #147361); color: white; width: 140px; height: 140px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(28, 166, 141, 0.4); opacity: 0; transform: scale(0.5); text-align: center; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.2);">التوجيه <span style="color: #FFEBEE; font-size: 14px; margin-top: 5px;">(المجلس)</span></div>
                                     
-                                    <div class="flow-arrow gs-step6" style="color: #1ca68d; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    <div class="flow-arrow gs-step6" style="color: #1ca68d; font-size: 24px; opacity: 0; flex-shrink: 0;">◀</div>
                                     
-                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #1B3B5A, #0e2031); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(27, 59, 90, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">التحليل <br><span style="color: #FFEBEE; font-size: 16px;">(اللجان)</span></div>
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #1B3B5A, #0e2031); color: white; width: 140px; height: 140px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(27, 59, 90, 0.4); opacity: 0; transform: scale(0.5); text-align: center; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.2);">التحليل <span style="color: #FFEBEE; font-size: 14px; margin-top: 5px;">(اللجان)</span></div>
                                     
-                                    <div class="flow-arrow gs-step6" style="color: #1B3B5A; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    <div class="flow-arrow gs-step6" style="color: #1B3B5A; font-size: 24px; opacity: 0; flex-shrink: 0;">◀</div>
                                     
-                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #CFA043, #A57D2C); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(207, 160, 67, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">الضبط <br><span style="color: #FFEBEE; font-size: 16px;">(المصفوفة)</span></div>
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #CFA043, #A57D2C); color: white; width: 140px; height: 140px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(207, 160, 67, 0.4); opacity: 0; transform: scale(0.5); text-align: center; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.2);">الضبط <span style="color: #FFEBEE; font-size: 14px; margin-top: 5px;">(المصفوفة)</span></div>
                                     
-                                    <div class="flow-arrow gs-step6" style="color: #CFA043; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    <div class="flow-arrow gs-step6" style="color: #CFA043; font-size: 24px; opacity: 0; flex-shrink: 0;">◀</div>
                                     
-                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #023230, #011c1b); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(2, 50, 48, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">الإلزام <br><span style="color: #FFEBEE; font-size: 16px;">(السياسات)</span></div>
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #023230, #011c1b); color: white; width: 140px; height: 140px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(2, 50, 48, 0.4); opacity: 0; transform: scale(0.5); text-align: center; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.2);">الإلزام <span style="color: #FFEBEE; font-size: 14px; margin-top: 5px;">(السياسات)</span></div>
                                     
-                                    <div class="flow-arrow gs-step6" style="color: #023230; font-size: 30px; font-weight: bold; opacity: 0; margin: 0 5px;">⬅️</div>
+                                    <div class="flow-arrow gs-step6" style="color: #023230; font-size: 24px; opacity: 0; flex-shrink: 0;">◀</div>
                                     
-                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #D32F2F, #9a0007); color: white; padding: 12px 25px; border-radius: 20px; font-weight: bold; font-size: 20px; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4); opacity: 0; transform: scale(0.5); text-align: center;">التنفيذ <br><span style="color: #FFEBEE; font-size: 16px;">(الإجراءات)</span></div>
+                                    <div class="flow-step gs-step6" style="background: linear-gradient(135deg, #D32F2F, #9a0007); color: white; width: 140px; height: 140px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4); opacity: 0; transform: scale(0.5); text-align: center; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.2);">التنفيذ <span style="color: #FFEBEE; font-size: 14px; margin-top: 5px;">(الإجراءات)</span></div>
 
                                 </div>
                             </div>
