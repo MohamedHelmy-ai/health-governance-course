@@ -269,9 +269,9 @@ main {
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
     transition: var(--transition);
     position: absolute;
-    bottom: 50px;
+    bottom: 35px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% + 8px));
 }
 
 .btn-start:hover {
