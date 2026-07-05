@@ -375,11 +375,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
 
                         <!-- Second element in RTL flex is on the LEFT. User wants Image and Text on the LEFT. -->
-                        <div class="media-left" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                            <img src="${slide.imageSrc}" class="media-img" style="max-width: 90%; max-height: 40vh; object-fit: contain; margin-bottom: 30px;">
-                            <div class="media-text" style="font-size: 32px; line-height: 1.6; color: #1B5A5A; direction: rtl; text-align: center; font-weight: bold; width: 100%;">
-                                ${chars}
+                        <div class="media-left" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative;">
+                            
+                            <!-- FIRST PART (0 to 11s) -->
+                            <div class="part-1-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; width: 100%; top: 50%; transform: translateY(-50%);">
+                                <img src="${slide.imageSrc}" class="media-img" style="max-width: 90%; max-height: 40vh; object-fit: contain; margin-bottom: 30px;">
+                                <div class="media-text" style="font-size: 32px; line-height: 1.6; color: #1B5A5A; direction: rtl; text-align: center; font-weight: bold; width: 100%;">
+                                    ${chars}
+                                </div>
                             </div>
+
+                            <!-- SECOND PART (13s to 20s) -->
+                            <div class="part-2-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; width: 100%; top: 50%; transform: translateY(-50%);">
+                                <img src="assets/images/2.2.png" class="media-img-2 gs-part2" style="max-width: 90%; max-height: 35vh; object-fit: contain; margin-bottom: 20px; opacity: 0;">
+                                <div class="media-text-2" style="display: flex; flex-direction: column; gap: 15px; width: 80%;">
+                                    <div class="line-item gs-part2-line" style="background: var(--color-teal); color: white; padding: 15px 20px; border-radius: 10px; font-size: 26px; font-weight: bold; opacity: 0;">خط 1: الإدارة التنفيذية</div>
+                                    <div class="line-item gs-part2-line" style="background: #1B3B5A; color: white; padding: 15px 20px; border-radius: 10px; font-size: 26px; font-weight: bold; opacity: 0;">خط 2: إدارة المخاطر</div>
+                                    <div class="line-item gs-part2-line" style="background: #CFA043; color: white; padding: 15px 20px; border-radius: 10px; font-size: 26px; font-weight: bold; opacity: 0;">خط 3: التدقيق الداخلي</div>
+                                </div>
+                            </div>
+                            
                         </div>
 
                     </div>
@@ -1497,6 +1512,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentTimeline.to('.media-img', {opacity: 0, scale: 0.8, duration: 0.5}, timeOut);
                 currentTimeline.to('.type-word', {opacity: 0, y: -10, duration: 0.5, stagger: 0.05}, timeOut);
             }
+
+            // --- PART 2 ANIMATIONS ---
+            currentTimeline.set('.gs-part2', {opacity: 0, scale: 0.5});
+            currentTimeline.set('.gs-part2-line', {opacity: 0, x: 50});
+
+            // Enter at 13 seconds
+            currentTimeline.to('.gs-part2', {opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.6)'}, 13);
+            currentTimeline.to('.gs-part2-line', {opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'}, 13.5);
+
+            // Exit at 20 seconds
+            currentTimeline.to('.gs-part2, .gs-part2-line', {opacity: 0, y: -20, duration: 0.5, stagger: 0.1, ease: 'power2.in'}, 20);
+
         }
 
         else if (slide.type === 'quality-warning') {
