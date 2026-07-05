@@ -515,7 +515,7 @@ main {
 
 .opt-num {
     position: absolute;
-    top: 240px;
+    top: 220px;
     transform: translateY(-50%);
     width: 40px;
     height: 50px;
@@ -627,7 +627,7 @@ main {
 .activity-option::after {
     content: '';
     position: absolute;
-    top: 240px;
+    top: 220px;
     width: 60px;
     height: 2px;
     background: repeating-linear-gradient(90deg, #ccc, #ccc 5px, transparent 5px, transparent 10px);
@@ -639,7 +639,7 @@ main {
 .activity-option::before {
     content: '';
     position: absolute;
-    top: 240px;
+    top: 220px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -919,7 +919,7 @@ main {
 
 .help-target {
     position: absolute;
-    top: 240px; left: 50%;
+    top: 220px; left: 50%;
     transform: translateX(-50%);
     width: 400px; height: 400px;
     z-index: -1;
@@ -1088,7 +1088,7 @@ main {
 .ch-slide-tab {
     color: white; 
     font-family: 'Tajawal', sans-serif; 
-    font-size: 13px; /* Reduced size */
+    font-size: 11px; /* Reduced size */
     font-weight: 500;
     margin-top: -3px; /* Pull it slightly up under the white box */
 }
@@ -1138,7 +1138,7 @@ main {
 
 .dnd-container {
     position: absolute;
-    top: 240px;
+    top: 220px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -1181,9 +1181,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
-  padding: 15px;
+  padding: 10px;
   background-color: #f8f9fa; /* لون خلفية هادئ يبرز البطاقات */
   border-radius: 15px;
 }
@@ -1191,11 +1191,11 @@ main {
 /* تنسيق البطاقة الأساسي */
 .draggable-card {
   background-color: #ffffff;
-  width: 200px;
+  width: 165px;
   border: 2px solid #E0E0E0;
   border-top: 6px solid #023230; /* الشريط العلوي الأخضر الداكن */
   border-radius: 10px;
-  padding: 15px 10px;
+  padding: 10px 5px;
   text-align: center;
   position: relative;
   cursor: grab; /* شكل مؤشر اليد للسحب */
@@ -1239,7 +1239,7 @@ main {
 
 /* تنسيق نص البطاقة */
 .card-text {
-  font-size: 13px;
+  font-size: 11px;
   color: #333333;
   line-height: 1.5;
   font-family: Cairo, Arial, sans-serif;
