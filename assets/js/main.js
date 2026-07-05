@@ -1998,11 +1998,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function positionHelpLabels() {
         const footerTargets = [
             { label: '.hl-next', id: 'btnNext', height: 60 },
-            { label: '.hl-prev', id: 'btnPrev', height: 140 },
-            { label: '.hl-mute', id: 'btnMute', height: 220 },
-            { label: '.hl-play', id: 'btnPlayPause', height: 80 },
-            { label: '.hl-repl', id: 'btnReplay', height: 180 },
-            { label: '.hl-prog', id: 'progress-fill', height: 260 } // use progress wrapper actually
+            { label: '.hl-prev', id: 'btnPrev', height: 125 },
+            { label: '.hl-mute', id: 'btnMute', height: 190 },
+            { label: '.hl-play', id: 'btnPlayPause', height: 255 },
+            { label: '.hl-repl', id: 'btnReplay', height: 320 },
+            { label: '.hl-prog', id: 'progress-fill', height: 60 } // use progress wrapper actually
         ];
         
         footerTargets.forEach(t => {
@@ -2016,6 +2016,22 @@ document.addEventListener('DOMContentLoaded', () => {
             
             label.style.left = `${centerX}px`;
             label.style.transform = `translateX(-50%)`;
+            const line = label.querySelector('.help-line');
+            if (line) line.style.left = '50%';
+            
+            // Prevent horizontal overflow for edge tooltips
+            setTimeout(() => {
+                const lRect = label.getBoundingClientRect();
+                if (lRect.left < 10) {
+                    label.style.transform = `translateX(0)`;
+                    label.style.left = `${centerX - 20}px`;
+                    if (line) line.style.left = '20px';
+                } else if (lRect.right > window.innerWidth - 10) {
+                    label.style.transform = `translateX(-100%)`;
+                    label.style.left = `${centerX + 20}px`;
+                    if (line) line.style.left = `calc(100% - 20px)`;
+                }
+            }, 0);
             
             // Calculate distance from bottom of screen to the top of the button
             const screenHeight = window.innerHeight;
@@ -2031,8 +2047,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const headerTargets = [
             { label: '.hl-page', id: 'page-total', height: 60 }, // pagination
-            { label: '.hl-home', id: 'btnHome', height: 140 },
-            { label: '.hl-menu', id: 'btnMenu', height: 220 }
+            { label: '.hl-home', id: 'btnHome', height: 125 },
+            { label: '.hl-menu', id: 'btnMenu', height: 190 }
         ];
         
         headerTargets.forEach(t => {
@@ -2046,6 +2062,22 @@ document.addEventListener('DOMContentLoaded', () => {
             
             label.style.left = `${centerX}px`;
             label.style.transform = `translateX(-50%)`;
+            const line = label.querySelector('.help-line');
+            if (line) line.style.left = '50%';
+            
+            // Prevent horizontal overflow for edge tooltips
+            setTimeout(() => {
+                const lRect = label.getBoundingClientRect();
+                if (lRect.left < 10) {
+                    label.style.transform = `translateX(0)`;
+                    label.style.left = `${centerX - 20}px`;
+                    if (line) line.style.left = '20px';
+                } else if (lRect.right > window.innerWidth - 10) {
+                    label.style.transform = `translateX(-100%)`;
+                    label.style.left = `${centerX + 20}px`;
+                    if (line) line.style.left = `calc(100% - 20px)`;
+                }
+            }, 0);
             
             const distToTop = rect.bottom;
             const labelTop = distToTop + t.height;
