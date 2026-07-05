@@ -1111,3 +1111,9 @@ main {
     background-position: center center !important;
     background-color: transparent !important;
 }
+
+
+/* Override Slide Padding to fit inside the hand-drawn safe space */
+.slide {
+    padding: 180px 100px 80px 100px !important;
+}
