@@ -385,6 +385,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
 
+                            
+                            <!-- THIRD PART (21s to 28s) -->
+                            <div class="part-3-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; top: 50%; transform: translateY(-50%);">
+                                <img src="assets/images/2.3.png" class="media-img-3 gs-part3" style="max-width: 90%; max-height: 40vh; object-fit: contain; margin-bottom: 20px; opacity: 0;">
+                                <div class="media-text-3" style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+                                    <div class="line-item gs-part3-line" style="background: var(--color-teal); color: white; padding: 20px 20px; border-radius: 10px; font-size: 32px; font-weight: bold; opacity: 0; text-align: center;">التوجيه الاستراتيجي والرقابة الشاملة</div>
+                                </div>
+                            </div>
+
                             <!-- SECOND PART (13s to 20s) -->
                             <div class="part-2-content" style="position: absolute; display: flex; flex-direction: column; align-items: center; width: 100%; top: 50%; transform: translateY(-50%);">
                                 <img src="assets/images/2.2.png" class="media-img-2 gs-part2" style="max-width: 90%; max-height: 35vh; object-fit: contain; margin-bottom: 20px; opacity: 0;">
@@ -1523,6 +1532,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Exit at 20 seconds
             currentTimeline.to('.gs-part2, .gs-part2-line', {opacity: 0, y: -20, duration: 0.5, stagger: 0.1, ease: 'power2.in'}, 20);
+            // --- PART 3 ANIMATIONS ---
+            currentTimeline.set('.gs-part3', {opacity: 0, scale: 0.5});
+            currentTimeline.set('.gs-part3-line', {opacity: 0, y: 50});
+
+            // Enter at 21 seconds
+            currentTimeline.to('.gs-part3', {opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.6)'}, 21);
+            currentTimeline.to('.gs-part3-line', {opacity: 1, y: 0, duration: 0.8, ease: 'back.out(1.5)'}, 21.5);
+
+            // Exit at 28 seconds
+            currentTimeline.to('.gs-part3, .gs-part3-line', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.1, ease: 'power2.in'}, 28);
+
+
 
         }
 
