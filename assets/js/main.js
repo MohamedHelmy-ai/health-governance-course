@@ -95,6 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentSlideIndex = nextIdx;
                 renderSlide(currentSlideIndex);
                 updateNavButtons();
+                // Ensure media plays (using the user gesture)
+                const media = window.activeMedia || audioPlayer;
+                if (media.paused) togglePlay();
             }
         });
 
@@ -107,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentSlideIndex = prevIdx;
                     renderSlide(currentSlideIndex);
                     updateNavButtons();
+                    // Ensure media plays
+                    const media = window.activeMedia || audioPlayer;
+                    if (media.paused) togglePlay();
                 }
             }
         });
@@ -1479,8 +1485,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Play synchronously to retain user gesture token
-        togglePlay();
+        // Removed togglePlay on init to prevent autoplay blocking on page load
     }
 
     init();
