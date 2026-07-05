@@ -11,13 +11,13 @@ const courseData = [
         id: "S02_MEDIA",
         type: "media-split",
         title: "هيكل تنظيمي",
-        audio: "assets/audio/S02_MODELS.mp3",
-        videoSrc: "assets/video/slide2.mp4",
+        audio: "assets/audio/slide 2.mp3",
+        videoSrc: "assets/video/slide 2.mp4",
         imageSrc: "assets/images/2.1.png",
-        timeIn: 5,
-        timeOut: 11,
+        timeIn: 4,
+        timeOut: 10,
         text: "هيكل تنظيمي يوزع الصلاحيات بين مستويات الإدارة لضمان الشفافية والمساءلة.",
-        duration: 55
+        duration: 53
     }
     ,{
         id: "S03_WARNING",
