@@ -1324,8 +1324,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const zones = document.querySelectorAll('.drop-zone');
             
             // Audio elements for feedback
-            const correctAudio = new Audio('assets/audio/اجابة صحيحة.mp3');
-            const incorrectAudio = new Audio('assets/audio/اجابة خاطئة.mp3');
+            const correctAudio = new Audio('assets/audio/Correct.mp3');
+            const incorrectAudio = new Audio('assets/audio/Wrong.mp3');
             
             // Disable next button initially
             if (btnNext) {
