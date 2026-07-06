@@ -11,8 +11,8 @@ const courseData = [
         id: "S02_MEDIA",
         type: "media-split",
         title: "هيكل تنظيمي",
-        audio: "assets/audio/slide2_new.mp3",
-        videoSrc: "assets/video/slide2.mp4",
+        audio: "assets/audio/slide2_v4.mp3",
+        videoSrc: "assets/video/slide2_v4.mp4",
         imageSrc: "assets/images/2.1.png",
         timeIn: 4,
         timeOut: 10,
@@ -24,7 +24,7 @@ const courseData = [
         type: "quality-warning",
         title: "تحذير الجودة",
         text: "عدم التزام 30% من الأطباء بسياسة توثيق تقارير الخروج",
-        audio: "assets/audio/slide3.mp3",
+        audio: "assets/audio/slide3_v4.mp3",
         duration: 45
     }
 ];
