@@ -1580,8 +1580,8 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.set('.gs-part2-line', {opacity: 0, x: 50});
 
             // Enter at 13 seconds
-            currentTimeline.to('.gs-part2', {opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.6)'}, 11);
-            currentTimeline.to('.gs-part2-line', {opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'}, 11.5);
+            currentTimeline.to('.gs-part2', {opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.6)'}, 12);
+            currentTimeline.to('.gs-part2-line', {opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)'}, 12.5);
 
             // Exit at 20 seconds
             currentTimeline.to('.gs-part2, .gs-part2-line', {opacity: 0, y: -20, duration: 0.5, stagger: 0.1, ease: 'power2.in'}, 20);
@@ -1610,21 +1610,21 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.set('.gs-part5-box', {opacity: 0, scale: 0.5, rotationX: 45});
 
             // Enter at 36 seconds
-            currentTimeline.to('.gs-part5', {opacity: 1, y: 0, duration: 1, ease: 'back.out(1.5)'}, 36);
-            currentTimeline.to('.gs-part5-box', {opacity: 1, scale: 1, rotationX: 0, duration: 1, ease: 'elastic.out(1, 0.5)'}, 36.5);
+            currentTimeline.to('.gs-part5', {opacity: 1, y: 0, duration: 1, ease: 'back.out(1.5)'}, 37);
+            currentTimeline.to('.gs-part5-box', {opacity: 1, scale: 1, rotationX: 0, duration: 1, ease: 'elastic.out(1, 0.5)'}, 37.5);
 
             // Exit at 43 seconds
-            currentTimeline.to('.gs-part5, .gs-part5-box', {opacity: 0, y: -30, duration: 0.5, ease: 'power2.in'}, 43);
+            currentTimeline.to('.gs-part5, .gs-part5-box', {opacity: 0, y: -30, duration: 0.5, ease: 'power2.in'}, 42);
             // --- PART 6 ANIMATIONS ---
             currentTimeline.set('.gs-part6', {opacity: 0, y: 50});
             currentTimeline.set('.gs-step6', {opacity: 0, scale: 0.1, y: 20});
 
             // Enter at 44 seconds
-            currentTimeline.to('.gs-part6', {opacity: 1, y: 0, duration: 1, ease: 'back.out(1.5)'}, 44);
-            currentTimeline.to('.gs-step6', {opacity: 1, scale: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'elastic.out(1, 0.5)'}, 44.5);
+            currentTimeline.to('.gs-part6', {opacity: 1, y: 0, duration: 1, ease: 'back.out(1.5)'}, 43);
+            currentTimeline.to('.gs-step6', {opacity: 1, scale: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'elastic.out(1, 0.5)'}, 43.5);
 
             // Exit at 53 seconds
-            currentTimeline.to('.gs-part6, .gs-step6', {opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.05, ease: 'power2.in'}, 52);
+            // Part 6 does not exit
 
 
 
@@ -1642,20 +1642,21 @@ document.addEventListener('DOMContentLoaded', () => {
             currentTimeline.set('.gs-qw-bottom', {opacity: 0, scale: 0.8, y: -50});
             
             // From Second 7: Top SVG appears
-            currentTimeline.to('.gs-qw-top', {opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)"}, 7.0);
+            currentTimeline.to('.gs-qw-top', {opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)"}, 10.0);
             
             // From Second 11: Text appears
-            currentTimeline.to('.gs-qw-text', {opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out"}, 11.0);
+            currentTimeline.to('.gs-qw-text', {opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out"}, 16.0);
             
             // From Second 19: Top SVG and Text disappear, and Bottom VS Section appears
-            currentTimeline.to('.gs-qw-top', {opacity: 0, scale: 0.5, duration: 0.5}, 19.0);
-            currentTimeline.to('.gs-qw-text', {opacity: 0, y: -10, duration: 0.2, stagger: 0.02}, 19.0);
+            currentTimeline.to('.gs-qw-top', {opacity: 0, scale: 0.5, duration: 0.5}, 33.0);
+            currentTimeline.to('.gs-qw-text', {opacity: 0, y: -10, duration: 0.2, stagger: 0.02}, 33.0);
             
-            currentTimeline.to('.gs-qw-bottom', {opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)"}, 19.5);
+            currentTimeline.to('.gs-qw-bottom', {opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)"}, 34.0);
             
             // From Second 35: Fade out VS Section and fade in Drag & Drop
             
-            currentTimeline.to('.gs-dnd-ui', {opacity: 1, pointerEvents: 'auto', duration: 0.8, ease: "power2.out"}, 35.5);
+            currentTimeline.to('.gs-qw-bottom', {opacity: 0, scale: 0.8, duration: 0.5}, 42.5);
+            currentTimeline.to('.gs-dnd-ui', {opacity: 1, pointerEvents: 'auto', duration: 0.8, ease: "power2.out"}, 43.0);
         }
         else if (slide.type === 'splash') {
             gsap.fromTo(container.querySelector('.gs-title'), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
