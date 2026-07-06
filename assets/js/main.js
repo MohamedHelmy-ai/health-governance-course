@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Sync slide video if wildly out of sync
                 const vid = document.getElementById('slide-video');
-                if (vid) {
+                if (vid && vid.readyState >= 3) {
                     if (Math.abs(vid.currentTime - audioPlayer.currentTime) > 1.0) {
                         vid.currentTime = audioPlayer.currentTime;
                     }
@@ -1240,7 +1240,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             audioPlayer.load();
             window.activeMedia = audioPlayer;
-            if (vid) vid.muted = true;
+            if (vid) {
+                vid.muted = true;
+                // Pause audio if video needs to buffer
+                vid.addEventListener('waiting', () => {
+                    if (!audioPlayer.paused) {
+                        audioPlayer.pause();
+                        vid.dataset.causedPause = "true";
+                    }
+                });
+                const resumeAudio = () => {
+                    if (vid.dataset.causedPause === "true") {
+                        audioPlayer.play().catch(e=>console.log(e));
+                        vid.dataset.causedPause = "false";
+                    }
+                };
+                vid.addEventListener('playing', resumeAudio);
+                vid.addEventListener('canplay', resumeAudio);
+            }
         }
 
         updatePlayUI(false);
