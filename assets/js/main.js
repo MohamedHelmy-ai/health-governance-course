@@ -1672,7 +1672,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // From Second 35: Fade out VS Section and fade in Drag & Drop
             
-            currentTimeline.to('.gs-qw-bottom', {opacity: 0, scale: 0.8, duration: 0.5}, 42.5);
+            // VS Section remains visible
             currentTimeline.to('.gs-dnd-ui', {opacity: 1, pointerEvents: 'auto', duration: 0.8, ease: "power2.out"}, 43.0);
         }
         else if (slide.type === 'splash') {
